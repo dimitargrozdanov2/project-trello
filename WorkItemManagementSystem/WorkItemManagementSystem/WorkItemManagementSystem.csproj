@@ -10,7 +10,6 @@
     <Folder Include="Commands\Creating\" />
     <Folder Include="Commands\Listing\" />
     <Folder Include="Core\" />
-    <Folder Include="Models\Contracts\" />
   </ItemGroup>
 
 </Project>

@@ -5,18 +5,20 @@ using WorkItemManagementSystem.Models.WorkItem.Contractes;
 
 namespace WorkItemManagementSystem.Models.WorkItem
 {
-    class WorkItem:IWorkItem
+    public abstract class WorkItem : IWorkItem
     {
         private string title;
         private string description;
+        private long id;
 
-        public WorkItem(string title,string description)
+        public WorkItem(string title, string description) 
         {
             this.Title = title;
             this.Description = description;
+            this.ID = IDGenerator.GetNextId();
         }
+        
 
-       // public string Id => throw new NotImplementedException();
 
         public string Title
         {
@@ -26,11 +28,11 @@ namespace WorkItemManagementSystem.Models.WorkItem
             }
             set
             {
-                if (value==null)
+                if (value == null)
                 {
                     throw new ArgumentNullException("Title cannot be empty");
                 }
-                if (value.Length<10||value.Length>50)
+                if (value.Length < 10 || value.Length > 50)
                 {
                     throw new ArgumentOutOfRangeException("Title must be between 10 and 50 characters");
                 }
@@ -55,6 +57,18 @@ namespace WorkItemManagementSystem.Models.WorkItem
                     throw new ArgumentOutOfRangeException("Description must be between 10 and 50 characters");
                 }
                 this.description = value;
+            }
+        }
+
+        public long ID  // Dim 
+        {
+            get
+            {
+                return this.id;
+            }
+            private set
+            {
+                this.id = value;
             }
         }
     }
