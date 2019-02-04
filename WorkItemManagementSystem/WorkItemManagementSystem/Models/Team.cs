@@ -8,7 +8,7 @@ namespace WorkItemManagementSystem.Models
     {
         private string name;
         private List<Member> members = new List<Member>();
-        private Board boards = new Board();
+        private Board boards = new Board(); // create lists of boards
         // TO DO class Members
 
         public Team()
