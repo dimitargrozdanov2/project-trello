@@ -28,11 +28,11 @@ namespace WorkItemManagementSystem.Models.WorkItem
             {
                 if (value==null)
                 {
-                    throw new ArgumentNullException();//TODO
+                    throw new ArgumentNullException("Title cannot be empty");
                 }
                 if (value.Length<10||value.Length>50)
                 {
-                    throw new ArgumentException();//TODO
+                    throw new ArgumentOutOfRangeException("Title must be between 10 and 50 characters");
                 }
                 this.title = value;
             }
@@ -48,11 +48,11 @@ namespace WorkItemManagementSystem.Models.WorkItem
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException();//TODO
+                    throw new ArgumentNullException("Description cannot be empty");
                 }
                 if (value.Length < 10 || value.Length > 500)
                 {
-                    throw new ArgumentException();//TODO
+                    throw new ArgumentOutOfRangeException("Description must be between 10 and 50 characters");
                 }
                 this.description = value;
             }
