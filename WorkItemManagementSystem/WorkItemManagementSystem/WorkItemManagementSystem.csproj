@@ -6,10 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Contracts\" />
-    <Folder Include="Commands\Creating\" />
     <Folder Include="Commands\Listing\" />
-    <Folder Include="Core\" />
   </ItemGroup>
 
 </Project>

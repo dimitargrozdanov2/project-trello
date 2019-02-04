@@ -6,5 +6,6 @@ namespace WorkItemManagementSystem.Models
 {
     public interface ITeam
     {
+
     }
 }
