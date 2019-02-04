@@ -12,6 +12,13 @@ namespace WorkItemManagementSystem.Models
         {
             this.name = name;
         }
-
+        public List<Activity> ActivityHistory() // TO DO
+        {
+            return new List<Activity>();
+        }
+        public Member AddMember()
+        {
+            //   return new Member(); // To DO
+        }
     }
 }
