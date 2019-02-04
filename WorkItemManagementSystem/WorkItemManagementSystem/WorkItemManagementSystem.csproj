@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Contracts\" />
+    <Folder Include="Commands\Creating\" />
+    <Folder Include="Commands\Listing\" />
+    <Folder Include="Core\" />
+    <Folder Include="Models\Contracts\" />
+  </ItemGroup>
+
+</Project>
