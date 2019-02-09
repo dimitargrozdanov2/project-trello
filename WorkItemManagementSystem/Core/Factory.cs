@@ -1,4 +1,5 @@
-﻿using WorkItemManagementSystem.Core.Contracts;
+﻿using System.Collections.Generic;
+using WorkItemManagementSystem.Core.Contracts;
 using WorkItemManagementSystem.Models;
 using WorkItemManagementSystem.Models.WorkItems;
 
@@ -21,7 +22,7 @@ namespace WorkItemManagementSystem.Core
             }
         }
 
-        public Person CreatePerson(string userName,string firstName, string lastName)
+        public Person CreatePerson(string userName, string firstName, string lastName)
         {
             return new Person(userName, firstName, lastName);
         }
@@ -51,9 +52,10 @@ namespace WorkItemManagementSystem.Core
         {
             return new Feedback(title);
         }
-        public Activity ShowPersonActivity(string message)
+        public List<Activity> ShowPersonActivity(Person person)
         {
-            return new Activity(message);
+
+            return person.ShowActivityHistory();
         }
 
     }

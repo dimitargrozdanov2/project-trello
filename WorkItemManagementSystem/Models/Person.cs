@@ -73,5 +73,12 @@ namespace WorkItemManagementSystem.Models
                 this.activityHistory = value;
             }
         }
+        public List<Activity> ShowActivityHistory()
+        {
+            this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
+            this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
+
+            return this.ActivityHistory;
+        }
     }
 }
