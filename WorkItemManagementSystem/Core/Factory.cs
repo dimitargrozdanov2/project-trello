@@ -51,6 +51,10 @@ namespace WorkItemManagementSystem.Core
         {
             return new Feedback(title);
         }
+        public Activity ShowPersonActivity(string message)
+        {
+            return new Activity(message);
+        }
 
     }
 }
