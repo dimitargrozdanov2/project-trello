@@ -34,7 +34,7 @@ namespace WorkItemManagementSystem.Commands.Listing
             sb.AppendLine($" Activity in {team.TeamName}:");
             foreach (var activity in activityHistory)
             {
-                sb.AppendLine($" *{activity.Message} - {activity.Timestamp}");
+                sb.AppendLine($" #  {activity.Timestamp} - {activity.Message}");
             }
             return sb.ToString();
         }
