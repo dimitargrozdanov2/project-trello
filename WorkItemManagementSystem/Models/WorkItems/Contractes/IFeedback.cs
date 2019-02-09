@@ -8,6 +8,6 @@ namespace WorkItemManagementSystem.Models.WorkItems.Contractes
     public interface IFeedback
     {
         int Rating { get; }
-        FeedbackStatus feedbackStatus { get; }
+        FeedbackStatus FeedbackStatus { get; }
     }
 }

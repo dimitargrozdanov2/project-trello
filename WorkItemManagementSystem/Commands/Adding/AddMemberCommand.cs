@@ -4,26 +4,27 @@ using System.Linq;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Models;
 
 namespace WorkItemManagementSystem.Commands.Adding
 {
-    class AddBoardToTeamCommand : Command, ICommand
+    public class AddMemberCommand :Command, ICommand
     {
 
-        public AddBoardToTeamCommand(IFactory factory, IEngine engine) : base(factory, engine)
+        public AddMemberCommand(IFactory factory,IEngine engine):base(factory,engine)
         {
         }
 
         public override string Execute(IList<string> parameters)
         {
 
-            string boardName;
+            string userName;
             string teamName;
 
             try
             {
-                boardName = parameters[0];
-                teamName = parameters[1];
+                userName = parameters[0];
+                teamName = parameters[2];
             }
             catch
             {
@@ -32,26 +33,23 @@ namespace WorkItemManagementSystem.Commands.Adding
 
 
             var teams = base.Engine.Teams;
-
+            var people = base.Engine.People;
+            
             if (!teams.ContainsKey(teamName))
             {
                 return $"{teamName} not exist";
             }
-
-            var team = teams[teamName];
-            var boards = team.Boards;
-            var board = base.Factory.CreateBoard(boardName);
-            team.CreateNewBoard(board);
-
-            foreach (var bord in boards)
+            if (!people.ContainsKey(userName))
             {
-                if (bord.BoardName==boardName)
-                {
-                    return $" Board with name {bord.BoardName} already exists in {teamName}.";
-                }
+                return $"{userName} not exist";
             }
 
-            string result = $" Board {board.BoardName} was created in {team.TeamName}";
+            var team = teams[teamName];
+            var member = people[userName];
+
+            team.AddMember(member);
+
+            string result = $" {member.FirstName} {member.LastName} was added to {teamName}";
 
             return result;
         }

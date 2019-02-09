@@ -25,16 +25,17 @@ namespace WorkItemManagementSystem.Commands.Creating
 
             try
             {
-                firstName = parameters[0];
-                lastName = parameters[1];
-                userName = parameters[2];
+                userName = parameters[0];
+                firstName = parameters[1];
+                lastName = parameters[2];
+                
             }
             catch
             {
                 throw new ArgumentException("Failed to parse CreatePerson command parameters.");
             }
 
-            var person = base.Factory.CreatePerson(firstName,lastName,userName);
+            var person = base.Factory.CreatePerson(userName,firstName,lastName);
             var people = base.Engine.People;
 
             var sb = new StringBuilder();
@@ -42,11 +43,12 @@ namespace WorkItemManagementSystem.Commands.Creating
             if (!people.ContainsKey(userName))
             {
                 people.Add(userName, person );
-                string msg = " {} {} with username: {} was created.".ReplaceBrakets(person.FirstName, person.LastName, person.UserName);
-                //person.
-                sb.AppendLine(msg);
 
-                //sb.AppendLine($" {person.FirstName} {person.LastName} with username: {person.UserName} was created.");
+                //string msg = " {} {} with username: {} was created.".ReplaceBrakets(person.FirstName, person.LastName, person.UserName);
+                
+                //sb.AppendLine(msg);
+
+                sb.AppendLine($" {person.FirstName} {person.LastName} with username: {person.UserName} was created.");
             }
             else
             {
