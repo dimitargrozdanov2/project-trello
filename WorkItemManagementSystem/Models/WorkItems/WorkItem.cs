@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WorkItemManagementSystem.Core.ExtentionMethods;
+using WorkItemManagementSystem.Models.Enums;
 
 namespace WorkItemManagementSystem.Models.WorkItems
 {
     public abstract class WorkItem 
     {
+        private WorkItemType type;
+        private long id;
         private string title;
         private string description;
-        private long id;
+        private string status;
 
         public WorkItem(string title, string description) 
         {
@@ -31,15 +35,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
             }
            protected  set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Title cannot be empty");
-                }
-                if (value.Length < 10 || value.Length > 50)
-                {
-                    throw new ArgumentOutOfRangeException("Title must be between 10 and 50 characters");
-                }
-                this.title = value;
+                this.title = value.Validate("Title", 5, 50) ? value : throw new ArgumentException("");
             }
         }
 
@@ -51,19 +47,11 @@ namespace WorkItemManagementSystem.Models.WorkItems
             }
             protected set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Description cannot be empty");
-                }
-                if (value.Length < 10 || value.Length > 500)
-                {
-                    throw new ArgumentOutOfRangeException("Description must be between 10 and 50 characters");
-                }
-                this.description = value;
+                this.description = value.Validate("Description", 10, 500) ? value : throw new ArgumentException("");
             }
         }
 
-        public long ID  // Dim 
+        public long ID
         {
             get
             {

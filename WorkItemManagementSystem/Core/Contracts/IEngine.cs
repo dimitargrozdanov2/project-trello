@@ -16,7 +16,6 @@ namespace WorkItemManagementSystem.Core.Contracts
 
         IParser Parser { get; set; }
 
-
         ///IList<Team> Teams2 { get; }
 
         IDictionary<string, Team> Teams { get; }
@@ -24,8 +23,5 @@ namespace WorkItemManagementSystem.Core.Contracts
         IDictionary<string, Person> People { get; }
 
         //IDictionary<string, Member> MembersInTeam { get;}
-
-
     }
-
 }
