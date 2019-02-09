@@ -4,50 +4,54 @@ using System.Linq;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
-using WorkItemManagementSystem.Models;
 
 namespace WorkItemManagementSystem.Commands.Adding
 {
-    public class AddMemberCommand :Command, ICommand
+    class AddBoardToTeamCommand : Command, ICommand
     {
-        public AddMemberCommand(IFactory factory,IEngine engine):base(factory,engine)
+
+        public AddBoardToTeamCommand(IFactory factory, IEngine engine) : base(factory, engine)
         {
         }
 
         public override string Execute(IList<string> parameters)
         {
 
-            string userName;
+            string boardName;
             string teamName;
 
             try
             {
-                userName = parameters[0];
-                teamName = parameters[2];
+                boardName = parameters[0];
+                teamName = parameters[1];
             }
             catch
             {
                 throw new ArgumentException("Failed to parse AddMember command parameters.");
             }
 
+
             var teams = base.Engine.Teams;
-            var people = base.Engine.People;
-            
+
             if (!teams.ContainsKey(teamName))
             {
                 return $"{teamName} not exist";
             }
-            if (!people.ContainsKey(userName))
-            {
-                return $"{userName} not exist";
-            }
 
             var team = teams[teamName];
-            var member = people[userName];
+            var boards = team.Boards;
+            var board = base.Factory.CreateBoard(boardName);
+            team.CreateNewBoard(board);
 
-            team.AddMember(member);
+            foreach (var bord in boards)
+            {
+                if (bord.BoardName==boardName)
+                {
+                    return $" Board with name {bord.BoardName} already exists in {teamName}.";
+                }
+            }
 
-            string result = $" {member.UserName} was added to {team.TeamName}";
+            string result = $" Board {board.BoardName} was created in {team.TeamName}";
 
             return result;
         }

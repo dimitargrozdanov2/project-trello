@@ -6,8 +6,8 @@ namespace WorkItemManagementSystem.Models.Contracts
 {
     public interface IPerson
     {
+        string UserName { get; }
         string FirstName { get; }
         string LastName { get; }
-        string UserName { get; }
     }
 }

@@ -11,13 +11,13 @@ namespace WorkItemManagementSystem.Models
         private string teamName;
         private IList<Person> members= new List<Person>();
         private List<Board> boards = new List<Board>();
-        private List<LogItem> activityHistory = new List<LogItem>();
+        private List<Activity> activityHistory = new List<Activity>();
 
 
         public Team(string teamName)
         {
             this.TeamName = teamName;
-            this.ActivityHistory.Add(new LogItem($"{teamName} created"));
+            this.ActivityHistory.Add(new Activity($"{teamName} created"));
         }
 
         public string TeamName
@@ -42,7 +42,7 @@ namespace WorkItemManagementSystem.Models
             }
         }
 
-        public List<LogItem> ActivityHistory
+        public List<Activity> ActivityHistory
         {
             get
             {
@@ -55,14 +55,14 @@ namespace WorkItemManagementSystem.Models
         public void AddMember(Person member)
         {
             this.members.Add(member);
-            this.ActivityHistory.Add(new LogItem($"{member.UserName} added"));
+            this.ActivityHistory.Add(new Activity($"{member.UserName} added"));
 
         }
 
         public void CreateNewBoard(Board board)
         {
             this.boards.Add(board);
-            this.ActivityHistory.Add(new LogItem($"{board.BoardName} created"));
+            this.ActivityHistory.Add(new Activity($"{board.BoardName} created"));
         }
 
         //TODO

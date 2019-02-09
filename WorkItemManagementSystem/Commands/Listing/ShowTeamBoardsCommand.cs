@@ -24,7 +24,7 @@ namespace WorkItemManagementSystem.Commands.Listing
             }
             catch
             {
-                throw new ArgumentException("Failed to parse ShowTeamBoards command parameters.");
+                throw new ArgumentException("Failed to parse ShowTeamCommand command parameters.");
             }
 
             var teams = base.Engine.Teams;

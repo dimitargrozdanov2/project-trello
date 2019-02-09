@@ -26,9 +26,9 @@ namespace WorkItemManagementSystem.Core
             }
         }
 
-        public Person CreatePerson(string userName,string firstName,string lastName)
+        public Person CreatePerson(string firstName,string lastName,string userName)
         {
-            return new Person(userName,firstName,lastName);
+            return new Person(firstName,lastName,userName);
         }
 
         public Team CreateTeam(string teamName)
@@ -36,7 +36,7 @@ namespace WorkItemManagementSystem.Core
         {
             return new Team(teamName);
         }
-
+        
         public Board CreateBoard(string boardName)
 
         {
@@ -51,11 +51,6 @@ namespace WorkItemManagementSystem.Core
         public Story CreateStory(string title)
         {
             return new Story(title);
-        }
-
-        public Feedback CreateFeedback(string title)
-        {
-            return new Feedback(title);
         }
 
     }

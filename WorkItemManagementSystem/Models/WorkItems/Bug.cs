@@ -9,7 +9,6 @@ namespace WorkItemManagementSystem.Models.WorkItems
     public class Bug : WorkItem, IBug
     {
         private List<string> stepsToReduce;
-        private List<LogItem> history = new List<LogItem>();
 
         public Bug(string title):base(title)
         {
@@ -41,22 +40,6 @@ namespace WorkItemManagementSystem.Models.WorkItems
 
         public BugStatus BugStatus { get; set; }
 
-        public List<LogItem> History
-        {
-            get
-            {
-                return new List<LogItem>(this.history);
-            }
-        }
-
         public long Id { get; set; }
-
-
-        public void ChangePriority(PriorityType newType)
-        {
-            // TODO: WorkItem.Status must change only one step at a time
-            this.Priority = newType;
-            this.history.Add(new LogItem($"'{this.Title}' priority changed to {newType}"));
-        }
     }
 }

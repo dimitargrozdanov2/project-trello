@@ -14,14 +14,18 @@ namespace WorkItemManagementSystem.Core
         private const string TerminationCommand = "End";
         private const string NullProvidersExceptionMessage = "cannot be null.";
 
+        // private because of Singleton design pattern
         private Engine()
         {
             this.Reader = new ConsoleReader();
             this.Writer = new ConsoleWriter();
             this.Parser = new CommandParser();
 
+            //this.Teams2 = new List<Team>();
+
             this.Teams = new Dictionary<string, Team>();
             this.People = new Dictionary<string, Person>();
+            //this.MembersInTeam = new Dictionary<string, Member>();
         }
 
         public static IEngine Instance
@@ -37,6 +41,7 @@ namespace WorkItemManagementSystem.Core
             }
         }
 
+        // Property dependencty injection not validated for simplicity
         public IReader Reader { get; set; }
 
         public IWriter Writer { get; set; }
@@ -44,9 +49,7 @@ namespace WorkItemManagementSystem.Core
         public IParser Parser { get; set; }
 
         public IList<Team> Teams2 { get; private set; }
-
-        public IDictionary<string, Member> MembersInTeam { get; private set; }
-
+        
         public IDictionary<string, Team> Teams { get; private set; }
 
         public IDictionary<string,Person> People { get; private set; }
@@ -71,6 +74,7 @@ namespace WorkItemManagementSystem.Core
                 catch (Exception ex)
                 {
                     this.Writer.WriteLine(ex.Message);
+                    //Errors.messages["symbolsRange"].ReplaceBrakets(nullString, 5, 15)
                 }
             }
         }

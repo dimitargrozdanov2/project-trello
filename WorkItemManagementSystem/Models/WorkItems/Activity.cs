@@ -4,9 +4,9 @@ using System.Text;
 
 namespace WorkItemManagementSystem.Models.WorkItems
 {
-    public class LogItem
+    public class Activity
     {
-        public LogItem(string message)
+        public Activity(string message)
         {
             this.Timestamp = DateTime.Now;
             this.Message = message;

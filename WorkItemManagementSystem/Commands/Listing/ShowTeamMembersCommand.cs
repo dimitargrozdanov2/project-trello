@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
+using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
@@ -25,7 +25,7 @@ namespace WorkItemManagementSystem.Commands.Listing
             }
             catch
             {
-                throw new ArgumentException("Failed to parse ShowTeamMembers command parameters.");
+                throw new ArgumentException("Failed to parse CreateTeam command parameters.");
             }
 
             var teams = base.Engine.Teams;

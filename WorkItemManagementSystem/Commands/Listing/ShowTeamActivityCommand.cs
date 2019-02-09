@@ -23,7 +23,7 @@ namespace WorkItemManagementSystem.Commands.Listing
             }
             catch
             {
-                throw new ArgumentException("Failed to parse ShowTeam command parameters.");
+                throw new ArgumentException("Failed to parse ShowTeamCommand command parameters.");
             }
 
             var teams = base.Engine.Teams;
@@ -34,7 +34,7 @@ namespace WorkItemManagementSystem.Commands.Listing
             sb.AppendLine($" Activity in {team.TeamName}:");
             foreach (var activity in activityHistory)
             {
-                sb.AppendLine($" #  {activity.Timestamp} - {activity.Message}");
+                sb.AppendLine($" *{activity.Message} - {activity.Timestamp}");
             }
             return sb.ToString();
         }

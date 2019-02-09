@@ -28,7 +28,7 @@ namespace WorkItemManagementSystem.Commands.Listing
             sb.AppendLine(" People:");
             foreach (var person in people.Values)
             {
-                sb.AppendLine($" * {person.UserName}: {person.FirstName} {person.LastName}");
+                sb.AppendLine($" * {person.FirstName} {person.LastName}");
             }
             return sb.ToString();
         }
