@@ -75,8 +75,9 @@ namespace WorkItemManagementSystem.Models
         }
         public List<Activity> ShowActivityHistory()
         {
-            this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
-            this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
+            //smelt code @Kiro & Edo
+            //this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
+            //this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
 
             return this.ActivityHistory;
         }
