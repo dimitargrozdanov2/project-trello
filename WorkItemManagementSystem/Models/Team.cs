@@ -20,6 +20,7 @@ namespace WorkItemManagementSystem.Models
             this.ActivityHistory.Add(new Activity($"{teamName} created"));
         }
 
+
         public string TeamName
         {
             get

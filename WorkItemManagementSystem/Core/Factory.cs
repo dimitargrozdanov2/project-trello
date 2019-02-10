@@ -48,15 +48,11 @@ namespace WorkItemManagementSystem.Core
         {
             return new Story(title);
         }
+
         public Feedback CreateFeedback(string title)
         {
             return new Feedback(title);
         }
-        //public List<Activity> ShowPersonActivity(Person person)
-        //{
-
-        //    return person.ShowActivityHistory();
-        //}
 
     }
 }

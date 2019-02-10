@@ -19,6 +19,5 @@ namespace WorkItemManagementSystem.Core.Contracts
         Bug CreateBug(string title);
         Story CreateStory(string title);
         Feedback CreateFeedback(string title);
-        //List<Activity> ShowPersonActivity(Person person);
     }
 }
