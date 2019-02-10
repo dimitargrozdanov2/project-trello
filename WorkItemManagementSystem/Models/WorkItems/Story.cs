@@ -9,14 +9,14 @@ namespace WorkItemManagementSystem.Models.WorkItems
     public class Story : WorkItem, IStory
     {
        
-        public Story(string title)
-        : base(title)
-        {
-        } 
+        //public Story(string title)
+        //: base(title)
+        //{
+        //} 
 
         //assignee
-        public Story(string title,string description,PriorityType priority, StorySizeType size, StoryStatus status)
-            :base(title,description)
+        public Story(string title, string description = "",PriorityType priority = PriorityType.None, StorySizeType size = StorySizeType.None, StoryStatus status = StoryStatus.None)
+            :base(WorkItemType.Story, title,description)
         {
             this.Priority = priority;
             this.Size = size;

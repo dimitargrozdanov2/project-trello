@@ -13,26 +13,30 @@ namespace WorkItemManagementSystem.Models.WorkItems
         private long id;
         private string title;
         private string description;
-        private WIStatus status;
         private List<IComment> comments;
         private List<Activity> history;
 
 
-        public WorkItem(string title, string description="", WIStatus status = WIStatus.None) //WIStatus.None
+        public WorkItem(WorkItemType type, string title, string description="", List<IComment> comments = null, List<Activity> history = null) 
         {
             this.Title = title;
             this.Description = description;
             this.ID = IDGenerator.GetNextId();
-
-            // Smell Code for testing
-            //status = (WIStatus)BugStatus.Active;
-            //BugStatus b = (BugStatus)WIStatus.Done;
+            this.Comments = comments;
+            this.History = history;
         }
-        //public WorkItem(string title)
-        //{
-        //    this.Title = title;
-        //    this.ID = IDGenerator.GetNextId();
-        //}
+
+        public WorkItemType Тype
+        {
+            get
+            {
+                return this.type;
+            }
+            private set
+            {
+                this.type = value;
+            }
+        }
 
         public long ID
         {
@@ -69,19 +73,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
                 this.description = value.Validate("Description", 10, 500) ? value : throw new ArgumentException("");
             }
         }
-
-        public WIStatus Status
-        {
-            get
-            {
-                return this.status;
-            }
-            protected set
-            {
-                this.status = value;
-            }
-        }
-
+        
         public List<IComment> Comments
         {
             get
