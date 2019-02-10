@@ -55,7 +55,7 @@ namespace WorkItemManagementSystem.Core
         public List<Activity> ShowPersonActivity(Person person)
         {
 
-            return person.ShowActivityHistory();
+            return person.ActivityHistory;
         }
 
     }

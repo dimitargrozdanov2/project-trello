@@ -16,17 +16,19 @@ namespace WorkItemManagementSystem.Models
         private List<IWorkItem> workItems = new List<IWorkItem>();
         private List<Activity> activityHistory = new List<Activity>();
 
-        public Person(string userName)
-        {
-            this.UserName = userName;
-            this.activityHistory.Add(new Activity($"{userName} created"));
-        }
+        //public Person(string userName)
+        //{
+        //    this.UserName = userName;
+        //    this.ActivityHistory.Add(new Activity($"{userName} created"));
+        //}
 
         public Person(string userName, string firstName = "", string lastName = "")
         {
             this.UserName = userName;
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.ActivityHistory.Add(new Activity($"{userName} was created"));
+            this.ActivityHistory.Add(new Activity($"{UserName} was added"));
         }
 
         public string UserName
@@ -73,13 +75,6 @@ namespace WorkItemManagementSystem.Models
                 this.activityHistory = value;
             }
         }
-        public List<Activity> ShowActivityHistory()
-        {
-            //smelt code @Kiro & Edo
-            //this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
-            //this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
-
-            return this.ActivityHistory;
-        }
+      
     }
 }
