@@ -20,7 +20,7 @@ namespace WorkItemManagementSystem.Models.WorkItems.Enums
 
     public enum WIStatus
     {
-        None//,
+        None,
 
         Active,
         Fixed,

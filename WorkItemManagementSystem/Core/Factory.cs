@@ -52,11 +52,11 @@ namespace WorkItemManagementSystem.Core
         {
             return new Feedback(title);
         }
-        public List<Activity> ShowPersonActivity(Person person)
-        {
+        //public List<Activity> ShowPersonActivity(Person person)
+        //{
 
-            return person.ShowActivityHistory();
-        }
+        //    return person.ShowActivityHistory();
+        //}
 
     }
 }
