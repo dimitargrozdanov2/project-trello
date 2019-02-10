@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WorkItemManagementSystem.Models.WorkItems.Contractes
 {
-    public interface IWorkItem
+    public interface IWorkItem : IStatus
     {
         long Id { get; }
         string Title { get; }

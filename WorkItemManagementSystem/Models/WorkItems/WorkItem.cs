@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using WorkItemManagementSystem.Core.ExtentionMethods;
-using WorkItemManagementSystem.Models.Enums;
+using WorkItemManagementSystem.Models.WorkItems.Contractes;
+using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models.WorkItems
 {
@@ -12,20 +13,38 @@ namespace WorkItemManagementSystem.Models.WorkItems
         private long id;
         private string title;
         private string description;
-        private string status;
+        private WIStatus status;
+        private List<IComment> comments;
+        private List<Activity> history;
 
-        public WorkItem(string title, string description) 
+
+        public WorkItem(string title, string description="", WIStatus status = WIStatus.None) //WIStatus.None
         {
             this.Title = title;
             this.Description = description;
             this.ID = IDGenerator.GetNextId();
-        }
-        public WorkItem(string title)
-        {
-            this.Title = title;
-            this.ID = IDGenerator.GetNextId();
-        }
 
+            // Smell Code for testing
+            //status = (WIStatus)BugStatus.Active;
+            //BugStatus b = (BugStatus)WIStatus.Done;
+        }
+        //public WorkItem(string title)
+        //{
+        //    this.Title = title;
+        //    this.ID = IDGenerator.GetNextId();
+        //}
+
+        public long ID
+        {
+            get
+            {
+                return this.id;
+            }
+            private set
+            {
+                this.id = value;
+            }
+        }
 
         public string Title
         {
@@ -51,15 +70,39 @@ namespace WorkItemManagementSystem.Models.WorkItems
             }
         }
 
-        public long ID
+        public WIStatus Status
         {
             get
             {
-                return this.id;
+                return this.status;
             }
-            private set
+            protected set
             {
-                this.id = value;
+                this.status = value;
+            }
+        }
+
+        public List<IComment> Comments
+        {
+            get
+            {
+                return this.comments;
+            }
+            protected set
+            {
+                this.comments = value;
+            }
+        }
+
+        public List<Activity> History
+        {
+            get
+            {
+                return this.history;
+            }
+            protected set
+            {
+                this.history = value;
             }
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WorkItemManagementSystem.Models.Enums;
 using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models.Extensions
