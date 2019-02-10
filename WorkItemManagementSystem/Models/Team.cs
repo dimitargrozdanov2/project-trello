@@ -78,5 +78,20 @@ namespace WorkItemManagementSystem.Models
             }
             return sb.ToString();
         }
+        public List<string> getBoardNames()
+        {
+            List<string> boardnames = new List<string>();
+            foreach (var board in Boards)
+            {
+                boardnames.Add(board.BoardName);
+            }
+            return boardnames;
+        }
+
+        public  Board getBoardByName(string name)
+        {
+            int index = getBoardNames().IndexOf(name);
+            return index < 0 ? null : Boards[index];
+        }
     }
 }
