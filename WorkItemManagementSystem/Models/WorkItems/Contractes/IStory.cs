@@ -5,7 +5,7 @@ using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models.WorkItems.Contractes
 {
-    public interface IStory:IWorkItem
+    public interface IStory : IWorkItem
     {
         PriorityType Priority { get; }
         StorySizeType Size { get; }

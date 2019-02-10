@@ -5,7 +5,7 @@ using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models.WorkItems.Contractes
 {
-    public interface IFeedback
+    public interface IFeedback : IWorkItem
     {
         int Rating { get; }
         FeedbackStatus FeedbackStatus { get; }

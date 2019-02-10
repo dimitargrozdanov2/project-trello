@@ -10,11 +10,11 @@ namespace WorkItemManagementSystem.Models.WorkItems
     {
         private List<string> stepsToReduce;
 
-        public Feedback(string title) : base(title)
-        {
-        }
+        //public Feedback(string title) : base(title)
+        //{
+        //}
 
-        public Feedback(string title, int rating, FeedbackStatus feedbackStatus) : base(title)
+        public Feedback(string title, int rating = 0, FeedbackStatus feedbackStatus = FeedbackStatus.None) : base(WorkItemType.Feedback, title)
         {
             this.Rating = rating;
             this.FeedbackStatus = feedbackStatus;

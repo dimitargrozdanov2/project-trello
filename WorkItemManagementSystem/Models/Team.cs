@@ -65,6 +65,7 @@ namespace WorkItemManagementSystem.Models
             this.boards.Add(board);
             this.ActivityHistory.Add(new Activity($"{board.BoardName} created"));
         }
+<<<<<<< HEAD
 
         //TODO
         public string Print()
@@ -93,5 +94,7 @@ namespace WorkItemManagementSystem.Models
             int index = getBoardNames().IndexOf(name);
             return index < 0 ? null : Boards[index];
         }
+=======
+>>>>>>> 86afc722df523769f3927203f91c62f303b4a576
     }
 }

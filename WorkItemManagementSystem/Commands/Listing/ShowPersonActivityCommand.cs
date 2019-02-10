@@ -36,15 +36,12 @@ namespace WorkItemManagementSystem.Commands.Listing
             var sb = new StringBuilder();
 
             var person = people[personName] != null ? people[personName] : throw new ArgumentException("No such person exists");
+            
             sb.AppendLine($" {personName} activity:");
             var activityHistory = person.ActivityHistory;
-
-
-          //  var AH = String.Join("\n\r * ", person.ShowActivityHistory());
-       //     sb.AppendLine($" * {AH} ");
             foreach (var activity in activityHistory)
             {
-                sb.Append($" #  {activity.Timestamp} - {activity.Message}" + "\r\n");
+                sb.AppendLine($" #  {activity.Timestamp} - {activity.Message}");
             }
             return sb.ToString();
         }

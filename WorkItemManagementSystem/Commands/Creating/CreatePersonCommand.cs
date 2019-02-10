@@ -44,11 +44,11 @@ namespace WorkItemManagementSystem.Commands.Creating
             {
                 people.Add(userName, person );
 
-                //string msg = " {} {} with username: {} was created.".ReplaceBrakets(person.FirstName, person.LastName, person.UserName);
+                string msg = " {} {} with username: {} was created.".ReplaceBrakets(person.FirstName, person.LastName, person.UserName);
                 
-                //sb.AppendLine(msg);
+                sb.AppendLine(msg);
 
-                sb.AppendLine($" {person.FirstName} {person.LastName} with username: {person.UserName} was created.");
+                //sb.AppendLine($" {person.FirstName} {person.LastName} with username: {person.UserName} was created.");
             }
             else
             {

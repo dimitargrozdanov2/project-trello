@@ -7,6 +7,7 @@ namespace WorkItemManagementSystem.Models.WorkItems.Contractes
 {
     public interface IBug: IWorkItem
     {
+        //WorkItemType Type { get ; }
         List<string> Steps { get; }
         PriorityType Priority { get; }
         SeverityType Severity { get; }

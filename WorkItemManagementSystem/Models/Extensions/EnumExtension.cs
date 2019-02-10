@@ -21,6 +21,7 @@ namespace WorkItemManagementSystem.Models.Extensions
             bool success = Enum.TryParse<BugStatus>(input, out result);
             return success ? result : BugStatus.None;
         }
+
         public static FeedbackStatus FeedbackStatusToEnum(this string input)
         {
             FeedbackStatus result;
