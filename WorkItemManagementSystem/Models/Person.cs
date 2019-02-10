@@ -19,7 +19,7 @@ namespace WorkItemManagementSystem.Models
         public Person(string userName)
         {
             this.UserName = userName;
-            this.activityHistory.Add(new Activity($"{userName} created"));
+            this.ActivityHistory.Add(new Activity($"{userName} created"));
         }
 
         public Person(string userName, string firstName = "", string lastName = "")
@@ -27,6 +27,7 @@ namespace WorkItemManagementSystem.Models
             this.UserName = userName;
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.ActivityHistory.Add(new Activity($"{userName} created"));
         }
 
         public string UserName
@@ -62,24 +63,23 @@ namespace WorkItemManagementSystem.Models
                 this.lastName = value.Validate("LastName", 0, 25) ? value : throw new ArgumentException("");
             }
         }
+
         public List<Activity> ActivityHistory
         {
             get
             {
                 return this.activityHistory;
             }
-            private set
-            {
-                this.activityHistory = value;
-            }
         }
-        public List<Activity> ShowActivityHistory()
-        {
-            //smelt code @Kiro & Edo
-            //this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
-            //this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
 
-            return this.ActivityHistory;
-        }
+        //public List<Activity> ShowActivityHistory()
+        //{
+        //    //smelt code @Kiro & Edo
+        //    //this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
+        //    //this.ActivityHistory.Add(new Activity("Added bug for testing purposes"));
+
+        //   // return this.ActivityHistory;
+        //}
+      
     }
 }

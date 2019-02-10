@@ -20,6 +20,7 @@ namespace WorkItemManagementSystem.Models
             this.ActivityHistory.Add(new Activity($"{teamName} created"));
         }
 
+
         public string TeamName
         {
             get
@@ -63,19 +64,6 @@ namespace WorkItemManagementSystem.Models
         {
             this.boards.Add(board);
             this.ActivityHistory.Add(new Activity($"{board.BoardName} created"));
-        }
-
-        //TODO
-        public string Print()
-        {
-            var sb = new StringBuilder();
-
-            sb.AppendLine($"Members in {teamName}:");
-            foreach (var member in members)
-            {
-                sb.AppendLine($"{member.UserName} {member.LastName}");
-            }
-            return sb.ToString();
         }
     }
 }

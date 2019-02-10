@@ -4,7 +4,6 @@ using System.Linq;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
-using WorkItemManagementSystem.Models;
 
 namespace WorkItemManagementSystem.Commands.Adding
 {

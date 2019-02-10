@@ -8,7 +8,7 @@ namespace WorkItemManagementSystem.Models
     {
         private string boardName;
         private List<WorkItem> workItems = new List<WorkItem>();
-        private List<Activity> activityHistory = new List<Activity>();
+        private readonly List<Activity> activityHistory = new List<Activity>();
 
 
         public Board(string boardName)
@@ -46,25 +46,25 @@ namespace WorkItemManagementSystem.Models
         {
             get
             {
-                return new List<Activity>(this.activityHistory);
+                return this.activityHistory;
             }
         }
 
         public void CreateNewBug(Bug bug)
         {
             this.WorkItems.Add(bug);
-            this.activityHistory.Add(new Activity($"Bug {bug.Title} created"));
+            this.ActivityHistory.Add(new Activity($"Bug {bug.Title} created"));
         }
 
         public void CreateNewStory(Story story)
         {
             this.WorkItems.Add(story);
-            this.activityHistory.Add(new Activity($"Story {story.Title} created"));
+            this.ActivityHistory.Add(new Activity($"Story {story.Title} created"));
         }
         public void CreateNewFeedback(Feedback feedback)
         {
             this.WorkItems.Add(feedback);
-            this.activityHistory.Add(new Activity($"Feedback {feedback.Title} created"));
+            this.ActivityHistory.Add(new Activity($"Feedback {feedback.Title} created"));
         }
     }
 }

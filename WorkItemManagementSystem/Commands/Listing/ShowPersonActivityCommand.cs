@@ -7,7 +7,7 @@ using WorkItemManagementSystem.Core.Contracts;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ShowPersonActivityCommand : Command, ICommand
+    class ShowPersonActivityCommand : Command
     {
         public ShowPersonActivityCommand(IFactory factory, IEngine engine)
          : base(factory, engine)
@@ -36,11 +36,13 @@ namespace WorkItemManagementSystem.Commands.Listing
             var sb = new StringBuilder();
 
             var person = people[personName] != null ? people[personName] : throw new ArgumentException("No such person exists");
-            sb.AppendLine($" {personName} activity:");
-
-            var AH = String.Join("\n\r * ", person.ShowActivityHistory());
-            sb.AppendLine($" * {AH} ");
             
+            sb.AppendLine($" {personName} activity:");
+            var activityHistory = person.ActivityHistory;
+            foreach (var activity in activityHistory)
+            {
+                sb.AppendLine($" #  {activity.Timestamp} - {activity.Message}");
+            }
             return sb.ToString();
         }
     }

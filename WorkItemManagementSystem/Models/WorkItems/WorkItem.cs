@@ -16,8 +16,17 @@ namespace WorkItemManagementSystem.Models.WorkItems
         private List<IComment> comments;
         private List<Activity> history;
 
+<<<<<<< HEAD
 
         public WorkItem(WorkItemType type, string title, string description="", List<IComment> comments = null, List<Activity> history = null) 
+=======
+        public WorkItem(string title) 
+        {
+            this.Title = title;
+            this.ID = IDGenerator.GetNextId();
+        }
+        public WorkItem(string title, string description, WIStatus status = WIStatus.None) //WIStatus.None
+>>>>>>> b005dd0f3f35a528f414dc80c56ad2b8d4ac66a0
         {
             this.Title = title;
             this.Description = description;
