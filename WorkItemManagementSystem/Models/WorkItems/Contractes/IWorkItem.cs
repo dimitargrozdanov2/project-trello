@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkItemManagementSystem.Models.WorkItems.Enums;
+﻿using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models.WorkItems.Contractes
 {
@@ -10,6 +7,8 @@ namespace WorkItemManagementSystem.Models.WorkItems.Contractes
         long Id { get; }
         string Title { get; }
         string Description { get; }
+        WorkItemType Type { get;}
+
         //List<IComment> Coments { get; }
         //List<Activity> History { get; }
     }

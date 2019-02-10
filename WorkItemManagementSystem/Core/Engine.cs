@@ -4,10 +4,11 @@ using WorkItemManagementSystem.Core.Contracts;
 using WorkItemManagementSystem.Core.Providor;
 using WorkItemManagementSystem.Models;
 using WorkItemManagementSystem.Models.Contracts;
+using WorkItemManagementSystem.Models.WorkItems;
 
 namespace WorkItemManagementSystem.Core
 {
-    public class Engine :IEngine
+    public class Engine : IEngine
     {
         private static IEngine instanceHolder;
 
@@ -25,7 +26,7 @@ namespace WorkItemManagementSystem.Core
 
             this.Teams = new Dictionary<string, Team>();
             this.People = new Dictionary<string, Person>();
-            //this.MembersInTeam = new Dictionary<string, Member>();
+            this.WorkItems = new Dictionary<long, WorkItem>();
         }
 
         public static IEngine Instance
@@ -48,12 +49,11 @@ namespace WorkItemManagementSystem.Core
 
         public IParser Parser { get; set; }
 
-        public IList<Team> Teams2 { get; private set; }
-        
         public IDictionary<string, Team> Teams { get; private set; }
 
-        public IDictionary<string,Person> People { get; private set; }
+        public IDictionary<string, Person> People { get; private set; }
 
+        public IDictionary<long, WorkItem> WorkItems { get; private set; }
 
 
         public void Start()

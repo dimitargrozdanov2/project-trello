@@ -17,7 +17,9 @@ namespace WorkItemManagementSystem.Core.Contracts
         Board CreateBoard(string boardName);
 
         Bug CreateBug(string title);
+
         Story CreateStory(string title);
+
         Feedback CreateFeedback(string title);
     }
 }

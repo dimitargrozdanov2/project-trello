@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using WorkItemManagementSystem.Models;
 using WorkItemManagementSystem.Models.Contracts;
+using WorkItemManagementSystem.Models.WorkItems;
 
 namespace WorkItemManagementSystem.Core.Contracts
 {
@@ -16,12 +17,13 @@ namespace WorkItemManagementSystem.Core.Contracts
 
         IParser Parser { get; set; }
 
-        ///IList<Team> Teams2 { get; }
-
         IDictionary<string, Team> Teams { get; }
 
         IDictionary<string, Person> People { get; }
 
-        //IDictionary<string, Member> MembersInTeam { get;}
+        IDictionary<long, WorkItem> WorkItems { get; }
+
+
     }
+
 }

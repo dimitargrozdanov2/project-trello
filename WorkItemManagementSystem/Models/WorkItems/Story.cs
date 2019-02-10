@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using WorkItemManagementSystem.Models.WorkItems.Contractes;
 using WorkItemManagementSystem.Models.WorkItems.Enums;
 
@@ -11,41 +9,40 @@ namespace WorkItemManagementSystem.Models.WorkItems
 
         private List<Activity> activityHistory = new List<Activity>();
 
-        //assignee
+        public Story(string title)
+        : base(title)
+        {
+            base.Тype = WorkItemType.Story;
+        }
 
         public Story(string title, string description = "",PriorityType priority = PriorityType.None, StorySizeType size = StorySizeType.None, StoryStatus status = StoryStatus.None, List<IComment> comments = null, List<Activity> history = null)
-            :base(WorkItemType.Story, title, description, comments, history)
+            :base(title, description, comments, history)
         {
             this.Priority = priority;
             this.Size = size;
             this.StatusType = status;
         }
-        
+
         public PriorityType Priority { get; set; }
 
         public StorySizeType Size { get; set; }
 
         public StoryStatus StatusType { get; set; }
 
-        public long Id { get; set; }
+        public WorkItemType Type { get; set; }
 
-        public void ChangePriority(PriorityType newPrio)
+        public override void ChangePriority(PriorityType newPriority)
         {
-            // TODO: WorkItem.Status must change only one step at a time
-            this.Priority = newPrio;
-            this.activityHistory.Add(new Activity($"'{this.Priority}' status changed to {newPrio}"));
+            this.Priority = newPriority;
         }
-        //public void ChangeSize(Member newAssignee)
-        //{
-        //    // TODO: Code smell
-        //    this.Owner = newAssignee;
-        //    this.activityHistory.Add(new LogItem($"'{this.Title}' has a new owner: {newAssignee.Name}"));
-        //}
-        //public void ChangeStatus(WorkItemType newType)
-        //{
-        //    // TODO: Code smell
-        //    this.Type = newType;
-        //}
-      
+        public override void ChangeSize(StorySizeType newType)
+        {
+            this.Size = newType;
+        }
+        public override void UpdateStoryStatus(StoryStatus newStatus)
+        {
+            this.StatusType = newStatus;
+        }
     }
 }
+

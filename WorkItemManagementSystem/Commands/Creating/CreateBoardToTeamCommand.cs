@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
@@ -45,7 +44,7 @@ namespace WorkItemManagementSystem.Commands.Adding
 
             foreach (var bord in boards)
             {
-                if (bord.BoardName==boardName)
+                if (bord.BoardName == boardName)
                 {
                     return $" Board with name {bord.BoardName} already exists in {teamName}.";
                 }
@@ -57,3 +56,4 @@ namespace WorkItemManagementSystem.Commands.Adding
         }
     }
 }
+

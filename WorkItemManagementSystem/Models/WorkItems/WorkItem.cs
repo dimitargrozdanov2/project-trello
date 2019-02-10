@@ -7,47 +7,32 @@ using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models.WorkItems
 {
-    public abstract class WorkItem 
+    public abstract class WorkItem
     {
-        private WorkItemType type;
         private long id;
         private string title;
         private string description;
         private List<IComment> comments;
         private List<Activity> history;
 
-        public WorkItem(WorkItemType type, string title, string description="", List<IComment> comments = null, List<Activity> history = null) 
+        public WorkItem(string title)
+        {
+            this.Title = title;
+            this.Id = IDGenerator.GetNextId();
+        }
+
+        public WorkItem(string title, string description = "", List<IComment> comments = null, List<Activity> history = null)
         {
             this.Title = title;
             this.Description = description;
-            this.ID = IDGenerator.GetNextId();
+            this.Id = IDGenerator.GetNextId();
             this.Comments = comments;
             this.History = history;
         }
 
-        public WorkItemType Тype
-        {
-            get
-            {
-                return this.type;
-            }
-            private set
-            {
-                this.type = value;
-            }
-        }
 
-        public long ID
-        {
-            get
-            {
-                return this.id;
-            }
-            private set
-            {
-                this.id = value;
-            }
-        }
+
+        public long Id { get; }
 
         public string Title
         {
@@ -55,7 +40,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
             {
                 return this.title;
             }
-           protected  set
+            protected set
             {
                 this.title = value.Validate("Title", 5, 50) ? value : throw new ArgumentException("");
             }
@@ -72,7 +57,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
                 this.description = value.Validate("Description", 10, 500) ? value : throw new ArgumentException("");
             }
         }
-        
+
         public List<IComment> Comments
         {
             get
@@ -95,6 +80,31 @@ namespace WorkItemManagementSystem.Models.WorkItems
             {
                 this.history = value;
             }
+        }
+
+        public WorkItemType Тype { get; set; }
+
+
+        public virtual void ChangePriority(PriorityType newPriority)
+        {
+        }
+        public virtual void ChangeSeverity(SeverityType newSeverity)
+        {
+        }
+        public virtual void UpdateBugStatus(BugStatus bugStatus)
+        {
+        }
+        public virtual void ChangeSize(StorySizeType newType)
+        {
+        }
+        public virtual void UpdateStoryStatus(StoryStatus storyStatus)
+        {
+        }
+        public virtual void UpdateFeedbackStatus(FeedbackStatus newStatus)
+        {
+        }
+        public virtual void ChangeRating(int newRating)
+        {
         }
     }
 }

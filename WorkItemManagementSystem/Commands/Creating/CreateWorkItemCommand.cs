@@ -15,6 +15,7 @@ namespace WorkItemManagementSystem.Commands.Creating
            : base(factory, engine)
         {
         }
+
         public override string Execute(IList<string> parameters)
         {
             string workItem;
@@ -31,11 +32,12 @@ namespace WorkItemManagementSystem.Commands.Creating
             }
             catch
             {
-                throw new ArgumentException("Failed to parse CreateWorkItem command parameters.");
+                throw new ArgumentException("Failed to parse CreateBug command parameters.");
             }
 
 
             var teams = base.Engine.Teams;
+            var workItems = base.Engine.WorkItems;
 
             if (!teams.ContainsKey(teamName))
             {
@@ -54,18 +56,23 @@ namespace WorkItemManagementSystem.Commands.Creating
                 case "bug":
                     var bug = base.Factory.CreateBug(title);
                     board.CreateNewBug(bug);
-
+                    long bugId = bug.Id;
+                    workItems.Add(bugId, bug);
                     sb.AppendLine($"Bug was created at {board.BoardName}");
                     break;
 
                 case "story":
                     var story = base.Factory.CreateStory(title);
                     board.CreateNewStory(story);
+                    long storyId = story.Id;
+                    workItems.Add(storyId, story);
                     sb.AppendLine($"Story was created at {board.BoardName}");
                     break;
                 case "feedback":
                     var feedback = base.Factory.CreateFeedback(title);
                     board.CreateNewFeedback(feedback);
+                    long feedbackId = feedback.Id;
+                    workItems.Add(feedbackId, feedback);
                     sb.AppendLine($"Feedback was created at {board.BoardName}");
                     break;
 
@@ -76,4 +83,6 @@ namespace WorkItemManagementSystem.Commands.Creating
         }
     }
 }
+
+
 
