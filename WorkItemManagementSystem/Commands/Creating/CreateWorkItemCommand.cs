@@ -15,7 +15,6 @@ namespace WorkItemManagementSystem.Commands.Creating
            : base(factory, engine)
         {
         }
-
         public override string Execute(IList<string> parameters)
         {
             string workItem;
@@ -32,7 +31,7 @@ namespace WorkItemManagementSystem.Commands.Creating
             }
             catch
             {
-                throw new ArgumentException("Failed to parse CreateBug command parameters.");
+                throw new ArgumentException("Failed to parse CreateWorkItem command parameters.");
             }
 
 
