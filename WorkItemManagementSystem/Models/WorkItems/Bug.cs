@@ -8,24 +8,35 @@ namespace WorkItemManagementSystem.Models.WorkItems
     public class Bug : WorkItem, IBug
     {
         private List<string> steps;
+        private Person assignee;
 
-        //assignee
-        public Bug(string title) : base(title)
+        //public Bug(string title) : base(title)
+        //{
+        //    base.Тype = WorkItemType.Bug;
+        //}
+
+        public Bug(string title, string description = "description", List<string> steps = null,
+                                PriorityType priority = PriorityType.None, SeverityType severity = SeverityType.None, BugStatus bugStatus = BugStatus.None, Person assignee = null, List<IComment> comments  = null, List<Activity> history = null) :
+            base(title, description, assignee, comments, history)
         {
             base.Тype = WorkItemType.Bug;
-        }
-
-        public Bug(string title, string description, List<string> steps = null,
-                                PriorityType priority = PriorityType.None, SeverityType severity = SeverityType.None, BugStatus bugStatus = BugStatus.None, List<IComment> comments  = null, List<Activity> history = null) :
-            base(title, description, comments, history)
-        {
             this.Steps = steps;
             this.Priority = priority;
             this.Severity = severity;
             this.BugStatus = bugStatus;
         }
 
-        public List<string> Steps { get; set; }
+        public List<string> Steps
+        {
+            get
+            {
+                return this.steps;
+            }
+            set
+            {
+                this.steps = value;
+            }
+        }
         
         public PriorityType Priority { get; set; }
 

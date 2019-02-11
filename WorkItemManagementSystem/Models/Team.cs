@@ -9,7 +9,7 @@ namespace WorkItemManagementSystem.Models
     public class Team : ITeam // Dim, created Team
     {
         private string teamName;
-        private IList<Person> members= new List<Person>();
+        private List<Person> members= new List<Person>();
         private List<Board> boards = new List<Board>();
         private List<Activity> activityHistory = new List<Activity>();
 
@@ -33,7 +33,13 @@ namespace WorkItemManagementSystem.Models
             }
         }
 
-        public IList<Person> Members => new List<Person>(this.members);
+        public List<Person> Members
+        {
+            get
+            {
+                return new List<Person>(this.members);
+            }
+        }
 
         public List<Board> Boards
         {
@@ -50,8 +56,6 @@ namespace WorkItemManagementSystem.Models
                 return this.activityHistory;
             }
         }
-
-
 
         public void AddMember(Person member)
         {
@@ -77,6 +81,7 @@ namespace WorkItemManagementSystem.Models
             }
             return sb.ToString();
         }
+
         public List<string> getBoardNames()
         {
             List<string> boardnames = new List<string>();
@@ -91,6 +96,22 @@ namespace WorkItemManagementSystem.Models
         {
             int index = getBoardNames().IndexOf(name);
             return index < 0 ? null : Boards[index];
+        }
+
+        public List<string> getMembersNames()
+        {
+            List<string> membersNames = new List<string>();
+            foreach (var member in Members)
+            {
+                membersNames.Add(member.UserName);
+            }
+            return membersNames;
+        }
+
+        public Person getMemberByName(string name)
+        {
+            int index = getMembersNames().IndexOf(name);
+            return index < 0 ? null : Members[index];
         }
     }
 }

@@ -74,7 +74,6 @@ namespace WorkItemManagementSystem.Core
                 catch (Exception ex)
                 {
                     this.Writer.WriteLine(ex.Message);
-                    //Errors.messages["symbolsRange"].ReplaceBrakets(nullString, 5, 15)
                 }
             }
         }

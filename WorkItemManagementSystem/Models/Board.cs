@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using WorkItemManagementSystem.Models.WorkItems;
+using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models
 {
@@ -17,7 +18,6 @@ namespace WorkItemManagementSystem.Models
             this.ActivityHistory.Add(new Activity($"{boardName} created"));
         }
 
-        //TODO: write comment
         public string BoardName
         {
             get
@@ -38,7 +38,11 @@ namespace WorkItemManagementSystem.Models
         {
             get
             {
-                return new List<WorkItem>(workItems);
+                return this.workItems;
+            }
+            private set
+            {
+                this.workItems = value;
             }
         }
 
@@ -66,67 +70,96 @@ namespace WorkItemManagementSystem.Models
             this.WorkItems.Add(feedback);
             this.ActivityHistory.Add(new Activity($"Feedback {feedback.Title} created"));
         }
-        //public List<string> GetStoryNames() //  Dim & Co - можех да го направя по ID, но нямаше да е удобно заради човешкия фактор
-        //{
-        //    List<string> storynames = new List<string>();
-        //    foreach (var story in WorkItems)
-        //    {
-        //        storynames.Add(story.Title);
-        //    }
-        //    return storynames;
-        //}
 
-        //public WorkItem GetStoryByName(string name)
-        //{
-        //    int index = GetStoryNames().IndexOf(name);
-        //    return index < 0 ? null : workItems[index];
-        //}
+        ////
 
-        //public List<string> GetBugNames()
-        //{
-        //    List<string> bugnames = new List<string>();
-        //    foreach (var bug in WorkItems)
-        //    {
-        //        bugnames.Add(bug.Title);
-        //    }
-        //    return bugnames;
-        //}
+        public List<string> GetStoryNames() 
+        {
+            List<string> storynames = new List<string>();
+            foreach (var story in WorkItems)
+            {
+                if (story.Тype == WorkItemType.Story)
+                {
+                    storynames.Add(story.Title);
+                }
+            }
+            return storynames;
+        }
 
-        //public WorkItem GetBugByName(string name)
-        //{
-        //    int index = GetBugNames().IndexOf(name);
-        //    return index < 0 ? null : workItems[index];
-        //}
+        public WorkItem GetStoryByName(string name)
+        {
+            int index = GetStoryNames().IndexOf(name);
+            return index < 0 ? null : workItems[index];
+        }
 
-        //public List<string> GetFeedbackNames()
-        //{
-        //    List<string> feedbacknames = new List<string>();
-        //    foreach (var feedback in WorkItems)
-        //    {
-        //        feedbacknames.Add(feedback.Title);
-        //    }
-        //    return feedbacknames;
-        //}
+        public List<string> GetBugNames()
+        {
+            List<string> bugnames = new List<string>();
+            foreach (var bug in WorkItems)
+            {
+                if (bug.Тype == WorkItemType.Bug)
+                {
+                    bugnames.Add(bug.Title);
+                }
+            }
+            return bugnames;
+        }
 
-        //public WorkItem GetFeedbackByName(string name)
-        //{
-        //    int index = GetFeedbackNames().IndexOf(name);
-        //    return index < 0 ? null : workItems[index];
-        //}
+        public WorkItem GetBugByName(string name)
+        {
+            int index = GetBugNames().IndexOf(name);
+            return index < 0 ? null : workItems[index];
+        }
 
-        //public List<double> GetWIbyID()
-        //{
-        //    List<double> IDs = new List<double>();
-        //    foreach (var workitem in WorkItems)
-        //    {
-        //        IDs.Add(workitem.ID);
-        //    }
-        //    return IDs;
-        //}
-        //public WorkItem GetWIbyID(double ID)
-        //{
-        //    int index = GetWIbyID().IndexOf(ID);
-        //    return index < 0 ? null : workItems[index];
-        //}
+        public List<string> GetFeedbackNames()
+        {
+            List<string> feedbacknames = new List<string>();
+            foreach (var feedback in WorkItems)
+            {
+                if (feedback.Тype == WorkItemType.Feedback)
+                {
+                    feedbacknames.Add(feedback.Title);
+                }
+            }
+            return feedbacknames;
+        }
+
+        public WorkItem GetFeedbackByName(string name)
+        {
+            int index = GetFeedbackNames().IndexOf(name);
+            return index < 0 ? null : workItems[index];
+        }
+
+        public List<string> GetWITitles()
+        {
+            List<string> titles = new List<string>();
+            foreach (var workitem in WorkItems)
+            {
+                titles.Add(workitem.Title);
+            }
+            return titles;
+        }
+
+        public WorkItem GetWIbyTitle(string title)
+        {
+            int index = GetWITitles().IndexOf(title);
+            return index < 0 ? null : workItems[index];
+        }
+
+        public List<double> GetWIIDs()
+        {
+            List<double> IDs = new List<double>();
+            foreach (var workitem in WorkItems)
+            {
+                IDs.Add(workitem.Id);
+            }
+            return IDs;
+        }
+
+        public WorkItem GetWIbyID(double ID)
+        {
+            int index = GetWIIDs().IndexOf(ID);
+            return index < 0 ? null : workItems[index];
+        }
     }
 }

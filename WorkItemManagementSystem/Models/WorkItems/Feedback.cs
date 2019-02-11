@@ -8,16 +8,17 @@ namespace WorkItemManagementSystem.Models.WorkItems
 {
     public class Feedback : WorkItem, IFeedback
     {
-        //assignee
+        private Person assignee;
 
-        public Feedback(string title) : base(title)
+        //public Feedback(string title) : base(title)
+        //{
+        //    base.Тype = WorkItemType.Feedback;
+        //}
+
+        public Feedback(string title, string description = "description", int rating = 0, FeedbackStatus feedbackStatus = FeedbackStatus.None, Person assignee = null, List<IComment> comments = null, List<Activity> history = null) 
+                    : base(title, description, assignee, comments, history)
         {
             base.Тype = WorkItemType.Feedback;
-        }
-
-        public Feedback(string title, string description = "", int rating = 0, FeedbackStatus feedbackStatus = FeedbackStatus.None, List<IComment> comments = null, List<Activity> history = null) 
-                    : base(title, description, comments, history)
-        {
             this.Rating = rating;
             this.FeedbackStatus = feedbackStatus;
         }
@@ -25,7 +26,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
         public int Rating { get; set; }
 
         public FeedbackStatus FeedbackStatus { get; set; }
-
+        
         public WorkItemType Type { get; set; }
 
         public override void ChangeRating(int newRating)

@@ -8,16 +8,18 @@ namespace WorkItemManagementSystem.Models.WorkItems
     {
 
         private List<Activity> activityHistory = new List<Activity>();
+        private Person assignee;
 
-        public Story(string title)
-        : base(title)
+        //public Story(string title)
+        //: base(title)
+        //{
+        //    base.Тype = WorkItemType.Story;
+        //}
+
+        public Story(string title, string description = "description", PriorityType priority = PriorityType.None, StorySizeType size = StorySizeType.None, StoryStatus status = StoryStatus.None, Person assignee = null, List<IComment> comments = null, List<Activity> history = null)
+            :base(title, description, assignee, comments, history)
         {
             base.Тype = WorkItemType.Story;
-        }
-
-        public Story(string title, string description = "",PriorityType priority = PriorityType.None, StorySizeType size = StorySizeType.None, StoryStatus status = StoryStatus.None, List<IComment> comments = null, List<Activity> history = null)
-            :base(title, description, comments, history)
-        {
             this.Priority = priority;
             this.Size = size;
             this.StatusType = status;
