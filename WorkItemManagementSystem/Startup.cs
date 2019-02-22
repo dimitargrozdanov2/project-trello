@@ -15,8 +15,7 @@
             var config = new AutofacConfig();
             var container = config.Build();
             var engine = container.Resolve<IEngine>();
-            engine.Start();
-            
+            engine.Start();           
         }
     }
 }

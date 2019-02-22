@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Abstract
 {
     public abstract class Command:ICommand
     {
         private readonly IFactory factory;
-        private readonly IEngine engine;
+        private readonly IDataBase dataBase;
 
-        public Command(IFactory factory, IEngine engine)
+        public Command(IFactory factory, IDataBase dataBase)
         {
             this.factory = factory;
-            this.engine = engine;
+            this.dataBase = dataBase;
         }
 
         public IFactory Factory
@@ -23,11 +24,11 @@ namespace WorkItemManagementSystem.Commands.Abstract
             }
         }
 
-        public IEngine Engine
+        public IDataBase DataBase
         {
             get
             {
-                return this.engine;
+                return this.dataBase;
             }
         }
 

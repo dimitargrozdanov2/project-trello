@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Adding
 {
     class CreateBoardToTeamCommand : Command, ICommand
     {
 
-        public CreateBoardToTeamCommand(IFactory factory, IEngine engine) : base(factory, engine)
+        public CreateBoardToTeamCommand(IFactory factory, IDataBase dataBase) : base(factory, dataBase)
         {
         }
 
@@ -30,7 +31,7 @@ namespace WorkItemManagementSystem.Commands.Adding
             }
 
 
-            var teams = base.Engine.Teams;
+            var teams = base.DataBase.Teams;
 
             if (!teams.ContainsKey(teamName))
             {
