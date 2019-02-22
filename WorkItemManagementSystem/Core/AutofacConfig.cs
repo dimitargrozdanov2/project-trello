@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Core
 {
