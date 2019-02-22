@@ -6,12 +6,12 @@ using WorkItemManagementSystem.Models.WorkItems;
 
 namespace WorkItemManagementSystem.Models
 {
-    public class Team : ITeam // Dim, created Team
+    public class Team : ITeam 
     {
         private string teamName;
-        private List<Person> members= new List<Person>();
-        private List<Board> boards = new List<Board>();
-        private List<Activity> activityHistory = new List<Activity>();
+        private IList<IPerson> members= new List<IPerson>();
+        private IList<IBoard> boards = new List<IBoard>();
+        private IList<Activity> activityHistory = new List<Activity>();
 
 
         public Team(string teamName)
@@ -33,42 +33,39 @@ namespace WorkItemManagementSystem.Models
             }
         }
 
-        public List<Person> Members
+        public IList<IPerson> Members
         {
             get
             {
-                return new List<Person>(this.members);
+                return new List<IPerson>(this.members);
             }
         }
 
-        public List<Board> Boards
+        public IList<IBoard> Boards
         {
             get
             {
-               return new List<Board>(this.boards);
+               return new List<IBoard>(this.boards);
             }
         }
 
-        public List<Activity> ActivityHistory
+        public ICollection<Activity> ActivityHistory
         {
             get
             {
-                return this.activityHistory;
+                return new List<Activity>(this.activityHistory);
             }
         }
 
-        IList<Person> ITeam.Members => throw new NotImplementedException();
 
-        public IList<Board> Board => throw new NotImplementedException();
-
-        public void AddMember(Person member)
+        public void AddMember(IPerson member)
         {
             this.members.Add(member);
             this.ActivityHistory.Add(new Activity($"{member.UserName} added"));
 
         }
 
-        public void CreateNewBoard(Board board)
+        public void CreateNewBoard(IBoard board)
         {
             this.boards.Add(board);
             this.ActivityHistory.Add(new Activity($"{board.BoardName} created"));
@@ -96,7 +93,7 @@ namespace WorkItemManagementSystem.Models
             return boardnames;
         }
 
-        public  Board getBoardByName(string name)
+        public  IBoard getBoardByName(string name)
         {
             int index = getBoardNames().IndexOf(name);
             return index < 0 ? null : Boards[index];
@@ -112,15 +109,10 @@ namespace WorkItemManagementSystem.Models
             return membersNames;
         }
 
-        public Person getMemberByName(string name)
+        public IPerson getMemberByName(string name)
         {
             int index = getMembersNames().IndexOf(name);
             return index < 0 ? null : Members[index];
-        }
-
-        public void AddMember(IPerson member)
-        {
-            throw new NotImplementedException();
         }
     }
 }

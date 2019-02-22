@@ -7,9 +7,8 @@ namespace WorkItemManagementSystem.Models
     public interface ITeam
     {
         string TeamName { get; }
-        IList<Person> Members { get; }
-
-        IList<Board> Board { get; }
+        IList<IPerson> Members { get; }
+        IList<IBoard> Boards { get; }
         void AddMember(IPerson member);
         void CreateNewBoard(IBoard board);
     }

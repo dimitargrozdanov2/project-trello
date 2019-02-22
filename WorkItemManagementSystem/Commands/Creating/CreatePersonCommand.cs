@@ -6,14 +6,15 @@ using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
 using WorkItemManagementSystem.Models;
 using WorkItemManagementSystem.Core.ExtentionMethods;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Creating
 {
     public class CreatePersonCommand:Command,ICommand
     {
 
-        public CreatePersonCommand(IFactory factory, IEngine engine)
-            :base(factory,engine)
+        public CreatePersonCommand(IFactory factory, IDataBase dataBase)
+            :base(factory,dataBase)
         {
         }
 
@@ -36,7 +37,7 @@ namespace WorkItemManagementSystem.Commands.Creating
             }
 
             var person = base.Factory.CreatePerson(userName,firstName,lastName);
-            var people = base.Engine.People;
+            var people = base.DataBase.People;
 
             var sb = new StringBuilder();
 
