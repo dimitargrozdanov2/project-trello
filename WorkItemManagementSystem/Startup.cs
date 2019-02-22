@@ -12,23 +12,11 @@
     {
         static void Main(string[] args)
         {
-   
-
-            // Commands
-          
-
-            // Data
-
-            // Engine
             var config = new AutofacConfig();
             var container = config.Build();
-
             var engine = container.Resolve<IEngine>();
             engine.Start();
             
-
-            //var engine = Engine.Instance;
-            //engine.Start();
         }
     }
 }

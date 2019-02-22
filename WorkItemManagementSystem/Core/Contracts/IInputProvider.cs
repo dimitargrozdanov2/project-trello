@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WorkItemManagementSystem.Core.Contracts
 {
-    public interface IReader
+    public interface IInputProvider
     {
         string ReadLine();
     }
