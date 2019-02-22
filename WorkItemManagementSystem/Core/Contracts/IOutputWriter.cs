@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WorkItemManagementSystem.Core.Contracts
 {
-    public interface IWriter
+    public interface IOutputWriter
     {
         void Write(string message);
 

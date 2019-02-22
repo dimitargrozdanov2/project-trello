@@ -5,10 +5,8 @@ using WorkItemManagementSystem.Commands.Contracts;
 
 namespace WorkItemManagementSystem.Core.Contracts
 {
-    public interface IParser
+    public interface ICommandParser
     {
-        ICommand ParseCommand(string fullCommand);
-
-        IList<string> ParseParameters(string fullCommand);
+        ICommand ParseCommand(string commandName);
     }
 }

@@ -5,7 +5,7 @@ using WorkItemManagementSystem.Core.Contracts;
 
 namespace WorkItemManagementSystem.Core.Providor
 {
-    public class ConsoleWriter:IWriter
+    public class ConsoleWriter:IOutputWriter
     {
         public void Write(string message)
         {

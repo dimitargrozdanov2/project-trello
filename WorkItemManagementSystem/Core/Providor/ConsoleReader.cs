@@ -5,7 +5,7 @@ using WorkItemManagementSystem.Core.Contracts;
 
 namespace WorkItemManagementSystem.Core.Providor
 {
-    public class ConsoleReader :IReader
+    public class ConsoleReader :IInputProvider
     {
         public string ReadLine()
         {

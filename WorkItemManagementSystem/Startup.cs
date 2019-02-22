@@ -7,8 +7,7 @@
     {
         static void Main(string[] args)
         {
-            var engine = Engine.Instance;
-            engine.Start();
+            //engine.Start();
         }
     }
 }
