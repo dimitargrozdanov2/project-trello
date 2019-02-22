@@ -14,29 +14,23 @@ namespace WorkItemManagementSystem.Models.WorkItems
         private string description;
         private List<IComment> comments;
         private List<Activity> history;
-        private Person assignee;
 
-        // FIX the Constructors to one
+        public WorkItem(string title)
+        {
+            this.Title = title;
+            this.Id = IDGenerator.GetNextId();
+        }
 
-        //public WorkItem(string title)
-        //{
-        //    this.Title = title;
-        //    this.Id = IDGenerator.GetNextId();
-        //    this.Assignee = assignee;
-        //}
-
-        public WorkItem(string title, string description = "", Person assignee = null, List<IComment> comments = null, List<Activity> history = null)
+        public WorkItem(string title, string description = "", List<IComment> comments = null, List<Activity> history = null)
         {
             this.Title = title;
             this.Description = description;
             this.Id = IDGenerator.GetNextId();
             this.Comments = comments;
             this.History = history;
-            this.Assignee = assignee;
         }
 
 
-        public WorkItemType Тype { get; set; }
 
         public long Id { get; }
 
@@ -64,18 +58,6 @@ namespace WorkItemManagementSystem.Models.WorkItems
             }
         }
 
-        public Person Assignee
-        {
-            get
-            {
-                return this.assignee;
-            }
-            set
-            {
-                this.assignee = value;
-            }
-        }
-
         public List<IComment> Comments
         {
             get
@@ -100,6 +82,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
             }
         }
 
+        public WorkItemType Тype { get; set; }
 
 
         public virtual void ChangePriority(PriorityType newPriority)
