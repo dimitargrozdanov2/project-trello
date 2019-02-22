@@ -12,9 +12,9 @@ namespace WorkItemManagementSystem.Commands.Adding
     {
         private IDataBase database;
 
-        public AddMemberCommand(IDataBase DataBase)
+        public AddMemberCommand(IDataBase dataBase)
         {
-            this.database = DataBase;
+            this.database = dataBase;
         }
 
         public string Execute(IList<string> parameters)
