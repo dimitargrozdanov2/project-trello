@@ -57,6 +57,10 @@ namespace WorkItemManagementSystem.Models
             }
         }
 
+        IList<Person> ITeam.Members => throw new NotImplementedException();
+
+        public IList<Board> Board => throw new NotImplementedException();
+
         public void AddMember(Person member)
         {
             this.members.Add(member);
@@ -112,6 +116,11 @@ namespace WorkItemManagementSystem.Models
         {
             int index = getMembersNames().IndexOf(name);
             return index < 0 ? null : Members[index];
+        }
+
+        public void AddMember(IPerson member)
+        {
+            throw new NotImplementedException();
         }
     }
 }

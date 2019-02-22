@@ -4,17 +4,20 @@ using System.Linq;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Adding
 {
-    public class AddMemberCommand :Command, ICommand
+    public class AddMemberCommand : ICommand
     {
+        private IDataBase database;
 
-        public AddMemberCommand(IFactory factory,IEngine engine):base(factory,engine)
+        public AddMemberCommand(IDataBase DataBase)
         {
+            this.database = DataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
 
             string userName;
@@ -30,9 +33,9 @@ namespace WorkItemManagementSystem.Commands.Adding
                 throw new ArgumentException("Failed to parse AddMember command parameters.");
             }
 
-
-            var teams = base.Engine.Teams;
-            var people = base.Engine.People;
+            
+            var teams = this.database.Teams;
+            var people = this.database.People;
             
             if (!teams.ContainsKey(teamName))
             {
