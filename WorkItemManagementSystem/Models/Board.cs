@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using WorkItemManagementSystem.Models.Contracts;
 using WorkItemManagementSystem.Models.WorkItems;
 using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models
 {
-    public class Board
+    public class Board:IBoard
     {
         private string boardName;
         private List<WorkItem> workItems = new List<WorkItem>();
