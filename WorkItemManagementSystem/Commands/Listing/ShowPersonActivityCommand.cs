@@ -4,16 +4,19 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ShowPersonActivityCommand : Command
+    class ShowPersonActivityCommand : ICommand
     {
-        public ShowPersonActivityCommand(IFactory factory, IEngine engine)
-         : base(factory, engine)
+        private IDataBase dataBase;
+
+        public ShowPersonActivityCommand(IDataBase dataBase)
         {
+            this.dataBase = dataBase;
         }
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
 
             string personName;
@@ -26,7 +29,7 @@ namespace WorkItemManagementSystem.Commands.Listing
             {
                 throw new ArgumentException("Failed to parse ShowPersonActivity command parameters.");
             }
-            var people = base.Engine.People;
+            var people = this.dataBase.People;
 
             if (people.Count == 0)
             {

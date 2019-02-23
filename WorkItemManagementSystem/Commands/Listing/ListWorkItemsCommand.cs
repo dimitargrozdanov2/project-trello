@@ -5,18 +5,21 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 using WorkItemManagementSystem.Models.Extensions;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ListWorkItemsCommand : Command, ICommand
+    class ListWorkItemsCommand :ICommand
     {
-        public ListWorkItemsCommand(IFactory factory, IEngine engine)
-            : base(factory, engine)
+        private IDataBase dataBase;
+
+        public ListWorkItemsCommand(IDataBase dataBase)
         {
+            this.dataBase = dataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
             string command;
 
@@ -29,7 +32,7 @@ namespace WorkItemManagementSystem.Commands.Listing
                 throw new ArgumentException("Failed to parse ListWorkItems command parameters.");
             }
 
-            var workItems = base.Engine.WorkItems;
+            var workItems = this.dataBase.WorkItems;
 
             if (workItems.Count == 0)
             {

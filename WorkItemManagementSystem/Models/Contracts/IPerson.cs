@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WorkItemManagementSystem.Models.WorkItems;
 
 namespace WorkItemManagementSystem.Models.Contracts
 {
@@ -9,5 +10,8 @@ namespace WorkItemManagementSystem.Models.Contracts
         string UserName { get; }
         string FirstName { get; }
         string LastName { get; }
+
+        IList<Activity> ActivityHistory { get; }
+
     }
 }

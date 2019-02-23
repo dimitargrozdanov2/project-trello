@@ -3,20 +3,21 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ShowPeopleCommand:Command, ICommand
+    class ShowPeopleCommand:ICommand
     {
-
-        public ShowPeopleCommand(IFactory factory, IEngine engine)
-            :base(factory,engine)
+        private IDataBase dataBase;
+        public ShowPeopleCommand(IDataBase dataBase)          
         {
+            this.dataBase = dataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
-            var people = base.Engine.People;
+            var people = this.dataBase.People;
 
             if (people.Count == 0)
             {
