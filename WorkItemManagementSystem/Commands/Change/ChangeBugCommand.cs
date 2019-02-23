@@ -4,17 +4,21 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 using WorkItemManagementSystem.Models.Extensions;
 
 namespace WorkItemManagementSystem.Commands.Changing
 {
-    class ChangeBugCommand : Command, ICommand
+    class ChangeBugCommand : ICommand
     {
-        public ChangeBugCommand(IFactory factory, IEngine engine) : base(factory, engine)
+        private IDataBase database;
+
+        public ChangeBugCommand(IDataBase dataBase)
         {
+            this.database = dataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
 
             string type;
@@ -34,7 +38,7 @@ namespace WorkItemManagementSystem.Commands.Changing
             }
 
 
-            var workItems = base.Engine.WorkItems;
+            var workItems = this.database.WorkItems;
             var bug = workItems[id];
 
             var sb = new StringBuilder();
