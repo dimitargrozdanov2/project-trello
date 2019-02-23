@@ -1,4 +1,5 @@
-﻿namespace WorkItemManagementSystem
+﻿
+namespace WorkItemManagementSystem
 {
 
     using WorkItemManagementSystem.Core;
