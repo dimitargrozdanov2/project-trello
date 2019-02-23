@@ -27,37 +27,42 @@ namespace WorkItemManagementSystem.Commands.Adding
 
             string userName;
             string workItem;
-            double r;
-            bool byId = false; 
+            //double r;
+            //bool byId = false; 
 
             try
             {
                 workItem = parameters[0];
                 userName = parameters[2];
-                if (Double.TryParse(workItem, out r))
-                {
-                    byId = true;
-                }
+                //if (Double.TryParse(workItem, out r))
+                //{
+                //    byId = true;
+                //}
             }
             catch
             {
                 throw new ArgumentException("Failed to parse AssignWorkItemToPerson command parameters.");
             }
 
-            List<ITeam> teams = new List<ITeam>(this.database.Teams.Values);
+            var teams = this.database.Teams;
             var people = this.database.People;
+            var workitem = this.database.WorkItems;
             
             if (!people.ContainsKey(userName))
             {
                 return $"Person with the name {userName} has not been registered!\n";
             }
+
+            if (!workitem)
             else 
             {
                 var t = 0;
                 Person member = null;
                 do
                 {
-                    member = teams[t].getMemberByName(userName);
+
+                   member = this.database.Teams[t].getMemberByName(userName);
+                    member = teams[t].getMemberByName(userName); 
                     if (member == null) t++;
                 } while (member == null && t < teams.Count);
                 if (member == null)
@@ -68,7 +73,8 @@ namespace WorkItemManagementSystem.Commands.Adding
                 {
                     var b = 0;
                     WorkItem wi = null;
-                    var boards = teams[t].Boards;
+                    var boards = this.database.Teams[t].Boards
+                        teams[t].Boards;
                     do
                     {
                         if (byId)

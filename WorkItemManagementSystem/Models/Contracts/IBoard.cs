@@ -13,7 +13,8 @@ namespace WorkItemManagementSystem.Models.Contracts
         void CreateNewBug(IBug bug);
         void CreateNewStory(IStory story);
         void CreateNewFeedback(Feedback feedback);
-
+        void GetWIbyTitle(string title);
+        void GetWIbyID(double ID);
 
 
     }
