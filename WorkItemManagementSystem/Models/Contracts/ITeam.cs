@@ -11,6 +11,6 @@ namespace WorkItemManagementSystem.Models
         IList<IBoard> Boards { get; }
         void AddMember(IPerson member);
         void CreateNewBoard(IBoard board);
-        void getMemberByName(string name);
+        IPerson getMemberByName(string name);
     }
 }
