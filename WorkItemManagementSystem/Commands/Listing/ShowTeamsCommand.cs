@@ -4,19 +4,22 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ShowTeamsCommand : Command, ICommand
+    class ShowTeamsCommand :ICommand
     {
-        public ShowTeamsCommand(IFactory factory, IEngine engine)
-            : base(factory, engine)
+        private IDataBase dataBase;
+
+        public ShowTeamsCommand(IDataBase dataBase)
         {
+            this.dataBase = dataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
-            var teams = base.Engine.Teams;
+            var teams = this.dataBase.Teams;
 
             if (teams.Count == 0)
             {

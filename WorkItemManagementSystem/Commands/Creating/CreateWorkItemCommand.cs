@@ -32,7 +32,7 @@ namespace WorkItemManagementSystem.Commands.Creating
             }
             catch
             {
-                throw new ArgumentException("Failed to parse CreateBug command parameters.");
+                throw new ArgumentException("Failed to parse CreateWorkItem command parameters.");
             }
 
 

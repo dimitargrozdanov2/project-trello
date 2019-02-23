@@ -4,17 +4,20 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ShowTeamBoardsCommand:Command,ICommand
+    class ShowTeamBoardsCommand:ICommand
     {
-        public ShowTeamBoardsCommand(IFactory factory, IEngine engine)
-            :base(factory,engine)
-        {           
+        private IDataBase dataBase;
+
+        public ShowTeamBoardsCommand(IDataBase dataBase)
+        {
+            this.dataBase = dataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
             string teamName;
 
@@ -27,7 +30,7 @@ namespace WorkItemManagementSystem.Commands.Listing
                 throw new ArgumentException("Failed to parse ShowTeamBoard command parameters.");
             }
 
-            var teams = base.Engine.Teams;
+            var teams = this.dataBase.Teams;
             var team = teams[teamName];
             var boards = team.Boards;
           

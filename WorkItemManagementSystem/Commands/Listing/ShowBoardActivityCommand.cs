@@ -5,17 +5,20 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ShowBoardActivityCommand:Command,ICommand
+    class ShowBoardActivityCommand:ICommand
     {
-        public ShowBoardActivityCommand(IFactory factory, IEngine engine)
-        : base(factory, engine)
+        private IDataBase dataBase;
+
+        public ShowBoardActivityCommand(IDataBase dataBase)
         {
+            this.dataBase = dataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
             string teamName;
             string boardName;
@@ -30,7 +33,7 @@ namespace WorkItemManagementSystem.Commands.Listing
                 throw new ArgumentException("Failed to parse ShowBoardActivity command parameters.");
             }
 
-            var teams = base.Engine.Teams;
+            var teams = this.dataBase.Teams;
             var team = teams[teamName];
             var board = team.Boards.Where(b => b.BoardName == boardName).First();
 
