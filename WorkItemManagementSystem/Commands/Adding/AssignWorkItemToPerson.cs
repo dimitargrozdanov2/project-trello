@@ -5,20 +5,24 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 using WorkItemManagementSystem.Models;
 using WorkItemManagementSystem.Models.WorkItems;
 using WorkItemManagementSystem.Models.WorkItems.Contractes;
 
 namespace WorkItemManagementSystem.Commands.Adding
 {
-    public class AssignWorkItemCommand : Command, ICommand  // NZN
+    public class AssignWorkItemCommand :  ICommand  // NZN
     {
+        private IDataBase database;
 
-        public AssignWorkItemCommand(IFactory factory, IEngine engine) : base(factory, engine)
+
+        public AssignWorkItemCommand(IDataBase dataBase) 
         {
+            this.database = dataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
 
             string userName;
@@ -40,8 +44,8 @@ namespace WorkItemManagementSystem.Commands.Adding
                 throw new ArgumentException("Failed to parse AssignWorkItemToPerson command parameters.");
             }
 
-            List<Team> teams = new List<Team>(base.Engine.Teams.Values);
-            var people = base.Engine.People;
+            List<ITeam> teams = new List<ITeam>(this.database.Teams.Values);
+            var people = this.database.People;
             
             if (!people.ContainsKey(userName))
             {
