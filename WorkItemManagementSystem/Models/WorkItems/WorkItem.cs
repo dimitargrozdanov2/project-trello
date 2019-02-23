@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using WorkItemManagementSystem.Core.ExtentionMethods;
+using WorkItemManagementSystem.Models.Contracts;
 using WorkItemManagementSystem.Models.WorkItems.Contractes;
 using WorkItemManagementSystem.Models.WorkItems.Enums;
 
@@ -64,7 +65,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
             }
         }
 
-        public Person Assignee
+        public IPerson Assignee
         {
             get
             {
