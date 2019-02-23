@@ -12,6 +12,8 @@ namespace WorkItemManagementSystem.Models.Contracts
         string LastName { get; }
 
         ICollection<Activity> ActivityHistory { get; }
+        List<WorkItem> WorkItems { get; }
+
 
     }
 }

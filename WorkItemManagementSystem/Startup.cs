@@ -1,12 +1,8 @@
-﻿namespace WorkItemManagementSystem
+﻿
+namespace WorkItemManagementSystem
 {
-    using Autofac;
-    using System;
-    using System.Linq;
-    using System.Reflection;
-    using WorkItemManagementSystem.Commands.Contracts;
+
     using WorkItemManagementSystem.Core;
-    using WorkItemManagementSystem.Core.Contracts;
 
     class Staratup
     {
