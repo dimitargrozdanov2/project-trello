@@ -11,7 +11,7 @@ namespace WorkItemManagementSystem.Models.Contracts
         string FirstName { get; }
         string LastName { get; }
 
-        IList<Activity> ActivityHistory { get; }
+        ICollection<Activity> ActivityHistory { get; }
 
     }
 }

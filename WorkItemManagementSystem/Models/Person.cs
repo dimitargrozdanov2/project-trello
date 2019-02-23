@@ -14,7 +14,7 @@ namespace WorkItemManagementSystem.Models
         private string lastName;
         private string userName;
         private List<WorkItem> workItems = new List<WorkItem>();
-        private List<Activity> activityHistory = new List<Activity>();
+        private ICollection<Activity> activityHistory = new List<Activity>();
 
         //public Person(string userName)
         //{
@@ -76,11 +76,11 @@ namespace WorkItemManagementSystem.Models
             }
         }
 
-        public List<Activity> ActivityHistory
+        public ICollection<Activity> ActivityHistory
         {
             get
             {
-                return this.activityHistory;
+                return new List<Activity>(this.activityHistory);
             }
         }
 

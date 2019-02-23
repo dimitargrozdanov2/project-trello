@@ -12,12 +12,12 @@ using WorkItemManagementSystem.Models.WorkItems.Contractes;
 
 namespace WorkItemManagementSystem.Commands.Adding
 {
-    public class AssignWorkItemCommand :  ICommand  // NZN
+    public class AssignWorkItemCommand : ICommand  // NZN
     {
         private IDataBase database;
 
 
-        public AssignWorkItemCommand(IDataBase dataBase) 
+        public AssignWorkItemCommand(IDataBase dataBase)
         {
             this.database = dataBase;
         }
@@ -47,22 +47,22 @@ namespace WorkItemManagementSystem.Commands.Adding
             var teams = this.database.Teams;
             var people = this.database.People;
             var workitem = this.database.WorkItems;
-            
+
             if (!people.ContainsKey(userName))
             {
                 return $"Person with the name {userName} has not been registered!\n";
             }
 
             if (!workitem)
-            else 
+            else
             {
                 var t = 0;
                 Person member = null;
                 do
                 {
 
-                   member = this.database.Teams[t].getMemberByName(userName);
-                    member = teams[t].getMemberByName(userName); 
+                    member = this.database.Teams[t].getMemberByName(userName);
+                    member = teams[t].getMemberByName(userName);
                     if (member == null) t++;
                 } while (member == null && t < teams.Count);
                 if (member == null)
@@ -80,7 +80,8 @@ namespace WorkItemManagementSystem.Commands.Adding
                         if (byId)
                         {
                             wi = boards[b].GetWIbyID(r); // Get WorkItem by ID
-                        } else
+                        }
+                        else
                         {
                             wi = boards[b].GetWIbyTitle(workItem);// Get WorkItem by NAME
                         }
@@ -90,7 +91,8 @@ namespace WorkItemManagementSystem.Commands.Adding
                     {
                         return $"Can not ASSIGN! The WorkItem \"{workItem}\" does not belong to the team that the Person {userName} belongs to!\n";
 
-                    } else
+                    }
+                    else
                     {
                         wi.Assignee = member;    //  member was assigned to the workItem wi
                         member.WorkItems.Add(wi);   // add workItem wi to the list of workItems of that Person/Member 

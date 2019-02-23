@@ -19,7 +19,7 @@ namespace WorkItemManagementSystem.Commands.Adding
             this.database = dataBase;
         }
 
-        public  string Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
 
             string userName;
@@ -41,9 +41,11 @@ namespace WorkItemManagementSystem.Commands.Adding
                 throw new ArgumentException("Failed to parse AssignWorkItemToPerson command parameters.");
             }
 
+
             //var people = new List<Person>(base.Engine.People.Values);
             var people = this.database.People;
             var WorkItems = new List<WorkItem>(this.database.WorkItems.Values);
+
 
 
             if (!people.ContainsKey(userName))
@@ -79,11 +81,12 @@ namespace WorkItemManagementSystem.Commands.Adding
                         wi.Assignee = null;    //  member was UNassigned from the workItem wi
                         person.WorkItems.Remove(wi);   // workItem wi was removed from the list of workItems of that Person/Member 
                     }
-                        
+
                     string result = $" The {wi.Тype} \"{wi.Title}\" (Id: {wi.Id}) was UNassigned from {person.UserName} ({person.FirstName} {person.LastName})\n";
                     return result;
                 }
             }
         }
     }
+}
 }

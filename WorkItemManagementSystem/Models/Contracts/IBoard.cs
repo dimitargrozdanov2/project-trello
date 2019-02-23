@@ -10,8 +10,8 @@ namespace WorkItemManagementSystem.Models.Contracts
         List<WorkItem> WorkItems { get; }
         List<Activity> ActivityHistory { get;}
 
-        void CreateNewBug(IBug bug);
-        void CreateNewStory(IStory story);
+        void CreateNewBug(Bug bug);
+        void CreateNewStory(Story story);
         void CreateNewFeedback(Feedback feedback);
         WorkItem GetWIbyTitle(string title);
         WorkItem GetWIbyID(double ID);

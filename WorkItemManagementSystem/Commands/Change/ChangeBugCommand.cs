@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
-using WorkItemManagementSystem.Core.Contracts;
 using WorkItemManagementSystem.Core.Providor;
 using WorkItemManagementSystem.Models.Extensions;
 
