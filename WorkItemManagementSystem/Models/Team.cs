@@ -11,7 +11,7 @@ namespace WorkItemManagementSystem.Models
         private string teamName;
         private IList<IPerson> members= new List<IPerson>();
         private IList<IBoard> boards = new List<IBoard>();
-        private IList<Activity> activityHistory = new List<Activity>();
+        private ICollection<Activity> activityHistory = new List<Activity>();
 
 
         public Team(string teamName)

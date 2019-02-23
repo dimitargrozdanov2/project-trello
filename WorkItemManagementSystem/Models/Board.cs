@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using WorkItemManagementSystem.Models.Contracts;
 using WorkItemManagementSystem.Models.WorkItems;
+using WorkItemManagementSystem.Models.WorkItems.Contractes;
 using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models
@@ -161,6 +162,16 @@ namespace WorkItemManagementSystem.Models
         {
             int index = GetWIIDs().IndexOf(ID);
             return index < 0 ? null : workItems[index];
+        }
+
+        public void CreateNewBug(IBug bug)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateNewStory(IStory story)
+        {
+            throw new NotImplementedException();
         }
     }
 }
