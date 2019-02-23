@@ -1,5 +1,6 @@
 ﻿
 using Autofac;
+using System;
 using System.Linq;
 using System.Reflection;
 using WorkItemManagementSystem.Commands.Contracts;
@@ -10,37 +11,25 @@ namespace WorkItemManagementSystem.Core
 {
     internal sealed class AutofacConfig
     {
-        public IContainer Build()
-        {
-            var containerBuilder = new ContainerBuilder();
-            this.RegisterConvention(containerBuilder);
-            this.RegisterCoreComponents(containerBuilder);
-            return containerBuilder.Build();
-
-        }
-
-        private void RegisterConvention(ContainerBuilder builder)
+        public void Build()
         {
             var assembly = Assembly.GetExecutingAssembly();
+            var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces();
 
             var commandTypes = assembly.DefinedTypes.Where(typeInfo => typeInfo.ImplementedInterfaces.Contains(typeof(ICommand))).ToList();
+
+
             foreach (var commandType in commandTypes)
             {
-                builder.RegisterType(commandType.AsType()).Named<ICommand>(commandType.Name.Replace("Command", ""));
+                builder.RegisterType(commandType.AsType()).Named<ICommand>(commandType.Name.Replace("Command", "").ToLower());
             }
-            // Modify this to include exceptional cases and such... (if needed)
 
-        }
-
-        private void RegisterCoreComponents(ContainerBuilder builder)
-        {
             builder.RegisterType<DataBase>().As<IDataBase>().SingleInstance();
 
-           // builder.RegisterType<Engine>().As<IEngine>(); // don't think it is necessary
-            // Write the rest of your bindings... (if needed)
+            var container = builder.Build();
+            var engine = container.Resolve<IEngine>();
+            engine.Start();
         }
-
-
     }
 }

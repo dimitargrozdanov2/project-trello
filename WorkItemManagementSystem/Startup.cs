@@ -13,9 +13,7 @@
         static void Main(string[] args)
         {
             var config = new AutofacConfig();
-            var container = config.Build();
-            var engine = container.Resolve<IEngine>();
-            engine.Start();           
+            config.Build();
         }
     }
 }
