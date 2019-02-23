@@ -5,14 +5,14 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
-
+using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Creating
 {
     public class CreateWorkItemCommand : Command, ICommand
     {
-        public CreateWorkItemCommand(IFactory factory, IEngine engine)
-           : base(factory, engine)
+        public CreateWorkItemCommand(IFactory factory, IDataBase dataBase)
+           : base(factory, dataBase)
         {
         }
 
@@ -36,8 +36,8 @@ namespace WorkItemManagementSystem.Commands.Creating
             }
 
 
-            var teams = base.Engine.Teams;
-            var workItems = base.Engine.WorkItems;
+            var teams = base.DataBase.Teams;
+            var workItems = base.DataBase.WorkItems;
 
             if (!teams.ContainsKey(teamName))
             {

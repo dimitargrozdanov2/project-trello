@@ -4,6 +4,7 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 using WorkItemManagementSystem.Models;
 using WorkItemManagementSystem.Models.Contracts;
 
@@ -12,8 +13,8 @@ namespace WorkItemManagementSystem.Commands.Creating
     public class CreateTeamCommand : Command, ICommand
     {
 
-        public CreateTeamCommand(IFactory factory, IEngine engine)
-            : base(factory, engine)
+        public CreateTeamCommand(IFactory factory, IDataBase dataBase)
+            : base(factory, dataBase)
         {
         }
 
@@ -31,7 +32,7 @@ namespace WorkItemManagementSystem.Commands.Creating
             }
 
             var sb = new StringBuilder();
-            var teams = base.Engine.Teams;
+            var teams = base.DataBase.Teams;
             var members = new List<Person>();
 
 
