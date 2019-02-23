@@ -6,21 +6,14 @@ using WorkItemManagementSystem.Models.WorkItems;
 
 namespace WorkItemManagementSystem.Core
 {
-    class Factory : IFactory
+    public class Factory : IFactory
     {
-        private static IFactory instanceHolder = new Factory();
 
-        private Factory()
+        public  Factory()
         {
         }
 
-        public static IFactory Instance
-        {
-            get
-            {
-                return instanceHolder;
-            }
-        }
+
 
         public Person CreatePerson(string userName, string firstName, string lastName)
         {
