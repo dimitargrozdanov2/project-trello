@@ -4,20 +4,22 @@ using System.Text;
 using WorkItemManagementSystem.Commands.Abstract;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
+using WorkItemManagementSystem.Core.Providor;
 using WorkItemManagementSystem.Models;
 using WorkItemManagementSystem.Models.WorkItems;
 using WorkItemManagementSystem.Models.WorkItems.Contractes;
 
 namespace WorkItemManagementSystem.Commands.Adding
 {
-    public class UnAssignWorkItemCommand : Command, ICommand  // NZN
+    public class UnAssignWorkItemCommand : ICommand  // NZN
     {
-
-        public UnAssignWorkItemCommand(IFactory factory, IEngine engine) : base(factory, engine)
+        private IDataBase database;
+        public UnAssignWorkItemCommand(IDataBase dataBase)
         {
+            this.database = dataBase;
         }
 
-        public override string Execute(IList<string> parameters)
+        public  string Execute(IList<string> parameters)
         {
 
             string userName;
@@ -40,8 +42,8 @@ namespace WorkItemManagementSystem.Commands.Adding
             }
 
             //var people = new List<Person>(base.Engine.People.Values);
-            var people = base.Engine.People;
-            var WorkItems = new List<WorkItem>(base.Engine.WorkItems.Values);
+            var people = this.database.People;
+            var WorkItems = new List<WorkItem>(this.database.WorkItems.Values);
 
 
             if (!people.ContainsKey(userName))
