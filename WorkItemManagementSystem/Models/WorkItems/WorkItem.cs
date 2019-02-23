@@ -15,7 +15,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
         private string description;
         private List<IComment> comments;
         private List<Activity> history;
-        private Person assignee;
+        private IPerson assignee;
 
         // FIX the Constructors to one
 
@@ -26,7 +26,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
         //    this.Assignee = assignee;
         //}
 
-        public WorkItem(string title, string description = "", Person assignee = null, List<IComment> comments = null, List<Activity> history = null)
+        public WorkItem(string title, string description = "", IPerson assignee = null, List<IComment> comments = null, List<Activity> history = null)
         {
             this.Title = title;
             this.Description = description;

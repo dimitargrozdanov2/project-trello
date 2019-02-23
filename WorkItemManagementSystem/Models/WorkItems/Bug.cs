@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WorkItemManagementSystem.Models.Contracts;
 using WorkItemManagementSystem.Models.WorkItems.Contractes;
 using WorkItemManagementSystem.Models.WorkItems.Enums;
 
@@ -8,7 +9,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
     public class Bug : WorkItem, IBug
     {
         private List<string> steps;
-        private Person assignee;
+        private IPerson assignee;
 
         //public Bug(string title) : base(title)
         //{

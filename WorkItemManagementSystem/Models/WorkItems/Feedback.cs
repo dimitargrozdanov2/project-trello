@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WorkItemManagementSystem.Models.Contracts;
 using WorkItemManagementSystem.Models.WorkItems.Contractes;
 using WorkItemManagementSystem.Models.WorkItems.Enums;
 
@@ -8,7 +9,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
 {
     public class Feedback : WorkItem, IFeedback
     {
-        private Person assignee;
+        private IPerson assignee;
 
         //public Feedback(string title) : base(title)
         //{

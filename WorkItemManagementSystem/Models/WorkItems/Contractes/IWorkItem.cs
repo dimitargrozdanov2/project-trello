@@ -1,4 +1,5 @@
-﻿using WorkItemManagementSystem.Models.WorkItems.Enums;
+﻿using WorkItemManagementSystem.Models.Contracts;
+using WorkItemManagementSystem.Models.WorkItems.Enums;
 
 namespace WorkItemManagementSystem.Models.WorkItems.Contractes
 {
@@ -8,7 +9,7 @@ namespace WorkItemManagementSystem.Models.WorkItems.Contractes
         long Id { get; }
         string Title { get; }
         string Description { get; }
-        Person Assignee { get; }
+        IPerson Assignee { get; }
 
         //List<IComment> Coments { get; }
         //List<Activity> History { get; }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using WorkItemManagementSystem.Models.Contracts;
 using WorkItemManagementSystem.Models.WorkItems.Contractes;
 using WorkItemManagementSystem.Models.WorkItems.Enums;
 
@@ -8,7 +9,7 @@ namespace WorkItemManagementSystem.Models.WorkItems
     {
 
         private List<Activity> activityHistory = new List<Activity>();
-        private Person assignee;
+        private IPerson assignee;
 
         //public Story(string title)
         //: base(title)
