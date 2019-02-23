@@ -9,10 +9,10 @@ namespace WorkItemManagementSystem.Core
     public class Factory : IFactory
     {
 
-        public  Factory()
+
+        public Factory()
         {
         }
-
 
 
         public Person CreatePerson(string userName, string firstName, string lastName)

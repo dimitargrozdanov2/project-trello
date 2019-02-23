@@ -12,7 +12,9 @@
     {
         static void Main(string[] args)
         {
-            var config = new AutofacConfig();       
+            var config = new AutofacConfig();
+            config.Build();
+
         }
     }
 }
