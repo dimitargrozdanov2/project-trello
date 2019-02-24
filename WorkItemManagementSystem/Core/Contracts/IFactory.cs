@@ -14,7 +14,7 @@ namespace WorkItemManagementSystem.Core.Contracts
 
         IPerson CreatePerson(string userName,string firstName, string lastName);
 
-        Board CreateBoard(string boardName);
+        IBoard CreateBoard(string boardName);
 
         Bug CreateBug(string title);
 

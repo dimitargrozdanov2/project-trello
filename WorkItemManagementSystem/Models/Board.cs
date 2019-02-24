@@ -75,63 +75,6 @@ namespace WorkItemManagementSystem.Models
 
         ////
 
-        public List<string> GetStoryNames() 
-        {
-            List<string> storynames = new List<string>();
-            foreach (var story in WorkItems)
-            {
-                if (story.Тype == WorkItemType.Story)
-                {
-                    storynames.Add(story.Title);
-                }
-            }
-            return storynames;
-        }
-
-        public WorkItem GetStoryByName(string name)
-        {
-            int index = GetStoryNames().IndexOf(name);
-            return index < 0 ? null : workItems[index];
-        }
-
-        public List<string> GetBugNames()
-        {
-            List<string> bugnames = new List<string>();
-            foreach (var bug in WorkItems)
-            {
-                if (bug.Тype == WorkItemType.Bug)
-                {
-                    bugnames.Add(bug.Title);
-                }
-            }
-            return bugnames;
-        }
-
-        public WorkItem GetBugByName(string name)
-        {
-            int index = GetBugNames().IndexOf(name);
-            return index < 0 ? null : workItems[index];
-        }
-
-        public List<string> GetFeedbackNames()
-        {
-            List<string> feedbacknames = new List<string>();
-            foreach (var feedback in WorkItems)
-            {
-                if (feedback.Тype == WorkItemType.Feedback)
-                {
-                    feedbacknames.Add(feedback.Title);
-                }
-            }
-            return feedbacknames;
-        }
-
-        public WorkItem GetFeedbackByName(string name)
-        {
-            int index = GetFeedbackNames().IndexOf(name);
-            return index < 0 ? null : workItems[index];
-        }
-
         public List<string> GetWITitles()
         {
             List<string> titles = new List<string>();
@@ -162,16 +105,6 @@ namespace WorkItemManagementSystem.Models
         {
             int index = GetWIIDs().IndexOf(ID);
             return index < 0 ? null : workItems[index];
-        }
-
-        public void CreateNewBug(IBug bug)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateNewStory(IStory story)
-        {
-            throw new NotImplementedException();
         }
     }
 }
