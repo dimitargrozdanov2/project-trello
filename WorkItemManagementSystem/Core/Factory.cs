@@ -27,7 +27,7 @@ namespace WorkItemManagementSystem.Core
             return new Team(teamName);
         }
 
-        public Board CreateBoard(string boardName)
+        public IBoard CreateBoard(string boardName)
 
         {
             return new Board(boardName);

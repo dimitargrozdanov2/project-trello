@@ -5,9 +5,9 @@ using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
 using WorkItemManagementSystem.Core.Providor;
 
-namespace WorkItemManagementSystem.Commands.Adding
+namespace WorkItemManagementSystem.Commands.Creating
 {
-    class CreateBoardToTeamCommand : Command, ICommand
+    public class CreateBoardToTeamCommand : Command, ICommand
     {
 
         public CreateBoardToTeamCommand(IFactory factory, IDataBase dataBase) : base(factory, dataBase)
@@ -35,7 +35,7 @@ namespace WorkItemManagementSystem.Commands.Adding
 
             if (!teams.ContainsKey(teamName))
             {
-                return $"{teamName} not exist";
+                return $"{teamName} not exists.";
             }
 
             var team = teams[teamName];
