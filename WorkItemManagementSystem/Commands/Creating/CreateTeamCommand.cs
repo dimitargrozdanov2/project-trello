@@ -31,23 +31,21 @@ namespace WorkItemManagementSystem.Commands.Creating
                 throw new ArgumentException("Failed to parse CreateTeam command parameters.");
             }
 
-            var sb = new StringBuilder();
             var teams = base.DataBase.Teams;
-            var members = new List<Person>();
 
 
             if (!teams.ContainsKey(teamName))
             {
                 var team = base.Factory.CreateTeam(teamName);
                 teams.Add(teamName, team);
-                sb.Append($" Team {teamName} was created.");
+
+                return ($" Team {teamName} was created.");
             }
             else
             {
-                sb.Append($" Team with name {teamName} alteady exists");
+                throw new ArgumentException($" Team with name {teamName} alteady exists");
             }
            
-            return sb.ToString();
         }
     }
 }

@@ -15,7 +15,10 @@
 
   <ItemGroup>
     <Folder Include="Didi%27s Tests\" />
-    <Folder Include="Mitko%27s Tests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WorkItemManagementSystem\WorkItemManagementSystem.csproj" />
   </ItemGroup>
 
 </Project>
