@@ -9,7 +9,7 @@ using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ShowBoardActivityCommand:ICommand
+    public class ShowBoardActivityCommand:ICommand
     {
         private IDataBase dataBase;
 

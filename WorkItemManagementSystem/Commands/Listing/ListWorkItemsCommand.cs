@@ -10,7 +10,7 @@ using WorkItemManagementSystem.Models.Extensions;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ListWorkItemsCommand :ICommand
+    public class ListWorkItemsCommand :ICommand
     {
         private IDataBase dataBase;
 
