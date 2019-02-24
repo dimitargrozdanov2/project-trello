@@ -7,7 +7,7 @@ using WorkItemManagementSystem.Core.Providor;
 
 namespace WorkItemManagementSystem.Commands.Listing
 {
-    class ShowPeopleCommand:ICommand
+    public class ShowPeopleCommand:ICommand
     {
         private IDataBase dataBase;
         public ShowPeopleCommand(IDataBase dataBase)          

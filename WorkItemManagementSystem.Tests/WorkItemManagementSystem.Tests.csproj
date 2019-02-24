@@ -13,8 +13,11 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
   </ItemGroup>
 
+
   <ItemGroup>
-    <Folder Include="Didi%27s Tests\" />
+    <ProjectReference Include="..\WorkItemManagementSystem\WorkItemManagementSystem.csproj" />
+    <Folder Include="Didi%27s Tests\TeamTests\" />
+    <Folder Include="Mitko%27s Tests\" />
   </ItemGroup>
 
   <ItemGroup>

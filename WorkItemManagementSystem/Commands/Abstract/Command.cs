@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WorkItemManagementSystem.Commands.Contracts;
 using WorkItemManagementSystem.Core.Contracts;
 using WorkItemManagementSystem.Core.Providor;
@@ -12,8 +13,8 @@ namespace WorkItemManagementSystem.Commands.Abstract
 
         public Command(IFactory factory, IDataBase dataBase)
         {
-            this.factory = factory;
-            this.dataBase = dataBase;
+            this.factory = factory ?? throw new ArgumentNullException("Factory can not be null"); ;
+            this.dataBase = dataBase ?? throw new ArgumentNullException("Database can not be null"); ;
         }
 
         public IFactory Factory

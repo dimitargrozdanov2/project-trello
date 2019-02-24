@@ -14,7 +14,7 @@ namespace WorkItemManagementSystem.Commands.Adding
 
         public AddMemberCommand(IDataBase dataBase)
         {
-            this.database = dataBase;
+            this.database = dataBase ?? throw new ArgumentNullException("Database can not be null");
         }
 
         public string Execute(IList<string> parameters)
@@ -39,11 +39,11 @@ namespace WorkItemManagementSystem.Commands.Adding
             
             if (!teams.ContainsKey(teamName))
             {
-                return $"{teamName} not exist";
+                return $"{teamName} not exists.";
             }
             if (!people.ContainsKey(userName))
             {
-                return $"{userName} not exist";
+                return $"{userName} not exists.";
             }
 
             var team = teams[teamName];
@@ -51,7 +51,7 @@ namespace WorkItemManagementSystem.Commands.Adding
 
             team.AddMember(member);
 
-            string result = $" {member.FirstName} {member.LastName} was added to {teamName}";
+            string result = $" {member.UserName} was added to {teamName}";
 
             return result;
         }
