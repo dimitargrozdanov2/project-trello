@@ -53,7 +53,7 @@ namespace WorkItemManagementSystem.Models
         {
             get
             {
-                return new List<Activity>(this.activityHistory);
+                return this.activityHistory;
             }
         }
 

@@ -7,8 +7,8 @@ namespace WorkItemManagementSystem.Models.Contracts
     public interface IBoard
     {
         string BoardName { get; }
-        List<WorkItem> WorkItems { get; }
-        List<Activity> ActivityHistory { get;}
+        IList<WorkItem> WorkItems { get; }
+        ICollection<Activity> ActivityHistory { get;}
 
         void CreateNewBug(Bug bug);
         void CreateNewStory(Story story);

@@ -10,14 +10,14 @@ namespace WorkItemManagementSystem.Models
     public class Board:IBoard
     {
         private string boardName;
-        private List<WorkItem> workItems = new List<WorkItem>();
-        private readonly List<Activity> activityHistory = new List<Activity>();
+        private readonly IList<WorkItem> workItems = new List<WorkItem>();
+        private readonly ICollection<Activity> activityHistory = new List<Activity>();
 
 
         public Board(string boardName)
         {
             this.BoardName = boardName;
-            this.ActivityHistory.Add(new Activity($"{boardName} created"));
+            this.activityHistory.Add(new Activity($"{boardName} created"));
         }
 
         public string BoardName
@@ -36,19 +36,15 @@ namespace WorkItemManagementSystem.Models
             }
         }
 
-        public List<WorkItem> WorkItems
+        public IList<WorkItem> WorkItems
         {
             get
             {
-                return this.workItems;
-            }
-            private set
-            {
-                this.workItems = value;
+                return new List<WorkItem>(this.workItems);
             }
         }
 
-        public List<Activity> ActivityHistory
+        public ICollection<Activity> ActivityHistory
         {
             get
             {
