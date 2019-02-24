@@ -13,56 +13,60 @@ namespace WorkItemManagementSystem.Tests.Mitko_s_Tests
     [TestClass]
     public class CreateTeam_Should
     {
-        [TestMethod] 
+        [TestMethod]
         public void CreateTeam_TeamAlreadyExists()
         {
-            //Act
-            var MockFactory = new Mock<IFactory>();
-            var MockDB = new Mock<IDataBase>();
-
-            //Mock and Setup the team
-            var parameters = new List<string> { "alpha" }; // alpha is team name 
-            var TeamMock = new Mock<ITeam>();      // създавам fake теам
-            TeamMock.Setup(x => x.TeamName).Returns("alpha"); // казвам да има име alpha
-            var teamList = new List<ITeam>() { TeamMock.Object };  //  добавям го в един лист, защото ще проверя по-долу дали съществува
-
-            // nie shte dobavim teama already kym nqkakv list
-
-            var sut = new CreateTeamCommand(MockFactory.Object, MockDB.Object);
-
-        }
-
-        [TestMethod]
-        public void CreateTeam_TeamAlreadyExists2()
-        {
-            //Act
+            var teamname = "teamX"; //setup key of the dictionary
             var factoryMock = new Mock<IFactory>();
             var dbMock = new Mock<IDataBase>();
-
-            //Mock and Setup the team
+            var teams = new Dictionary<string, ITeam>();  
             var teamMock = new Mock<ITeam>();
-            teamMock.Setup(x => x.TeamName).Returns("alpha");
-        //    var teamList = new Dictionary<ITeam> { teamMock.Object };
+            teams.Add(teamname, teamMock.Object); // add team to the dictionary
 
-            //Mock and Setup the db
-     //      dbMock.Setup(x => x.Teams).Returns(teamList);
-         
+            //Mock and Setup engine and db
+            dbMock.Setup(x => x.Teams).Returns(teams);
 
-      //      var sut = new CreateTeamCommand(MockFactory.Object, MockDB.Object);
-
-        }
-
-
-
-        [TestMethod]
-        public void CreateTeam_InvalidNumberofParameters()
-        {
+            var sut = new CreateTeamCommand(factoryMock.Object, dbMock.Object);
+            var parameters = new List<string> { "teamX" };
+            var ex = Assert.ThrowsException<ArgumentException>(() => sut.Execute(parameters));
+            Assert.AreEqual($" Team with name {teamname} alteady exists", ex.Message);
 
         }
-        [TestMethod]
-        public void CreateTeam_PrintFormattedMessage()
-        {
 
+        [TestMethod]
+        public void CreateNewTeam_ChecksCount()
+        {
+            var teamname = "teamX";
+            var factoryMock = new Mock<IFactory>();
+            var dbMock = new Mock<IDataBase>();
+            var teams = new Dictionary<string, ITeam>();
+            var teamMock = new Mock<ITeam>();
+
+            //Mock and Setup the engine and the db
+            dbMock.Setup(x => x.Teams).Returns(teams);
+            factoryMock.Setup(x => x.CreateTeam(teamname)).Returns(teamMock.Object);
+            var sut = new CreateTeamCommand(factoryMock.Object, dbMock.Object);
+            var parameters = new List<string> { "teamX" };
+            sut.Execute(parameters);
+            Assert.AreEqual(1, teams.Count);
+
+
+        }
+        [TestMethod]
+        public void CreateNewTeam_CheckFormattedMessage()
+        {
+            var teamname = "teamX";
+            var factoryMock = new Mock<IFactory>();
+            var dbMock = new Mock<IDataBase>();
+            var teams = new Dictionary<string, ITeam>();
+            var teamMock = new Mock<ITeam>();
+
+            dbMock.Setup(x => x.Teams).Returns(teams);
+            factoryMock.Setup(x => x.CreateTeam(teamname)).Returns(teamMock.Object);
+            var sut = new CreateTeamCommand(factoryMock.Object, dbMock.Object);
+            var parameters = new List<string> { "teamX" };
+            var message = sut.Execute(parameters);
+            Assert.AreEqual(" Team teamX was created.", message);
         }
     }
 }
