@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using WorkItemManagementSystem.Core.Contracts;
 using WorkItemManagementSystem.Models;
+using WorkItemManagementSystem.Models.Contracts;
 using WorkItemManagementSystem.Models.WorkItems;
 
 
@@ -15,7 +16,7 @@ namespace WorkItemManagementSystem.Core
         }
 
 
-        public Person CreatePerson(string userName, string firstName, string lastName)
+        public IPerson CreatePerson(string userName, string firstName, string lastName)
         {
             return new Person(userName, firstName, lastName);
         }

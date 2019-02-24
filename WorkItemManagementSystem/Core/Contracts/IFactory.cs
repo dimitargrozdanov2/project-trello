@@ -12,7 +12,7 @@ namespace WorkItemManagementSystem.Core.Contracts
     {
         Team CreateTeam(string teamName);
 
-        Person CreatePerson(string userName,string firstName, string lastName);
+        IPerson CreatePerson(string userName,string firstName, string lastName);
 
         Board CreateBoard(string boardName);
 

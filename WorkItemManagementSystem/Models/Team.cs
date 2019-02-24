@@ -71,18 +71,6 @@ namespace WorkItemManagementSystem.Models
             this.ActivityHistory.Add(new Activity($"{board.BoardName} created"));
         }
 
-        public string Print()
-        {
-            var sb = new StringBuilder();
-
-            sb.AppendLine($"Members in {teamName}:");
-            foreach (var member in members)
-            {
-                sb.AppendLine($"{member.UserName} {member.LastName}");
-            }
-            return sb.ToString();
-        }
-
         public List<string> getBoardNames()
         {
             List<string> boardnames = new List<string>();
