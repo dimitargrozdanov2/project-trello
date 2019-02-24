@@ -10,7 +10,7 @@ namespace WorkItemManagementSystem.Core.Contracts
 {
     public interface IFactory
     {
-        Team CreateTeam(string teamName);
+        ITeam CreateTeam(string teamName);
 
         IPerson CreatePerson(string userName,string firstName, string lastName);
 
