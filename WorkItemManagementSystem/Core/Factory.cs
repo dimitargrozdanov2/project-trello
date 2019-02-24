@@ -21,7 +21,7 @@ namespace WorkItemManagementSystem.Core
             return new Person(userName, firstName, lastName);
         }
 
-        public Team CreateTeam(string teamName)
+        public ITeam CreateTeam(string teamName)
 
         {
             return new Team(teamName);
