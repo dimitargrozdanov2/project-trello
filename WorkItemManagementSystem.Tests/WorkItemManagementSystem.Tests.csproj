@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\WorkItemManagementSystem\WorkItemManagementSystem.csproj" />
     <Folder Include="Didi%27s Tests\TeamTests\" />
-    <Folder Include="Mitko%27s Tests\" />
   </ItemGroup>
 
   <ItemGroup>
