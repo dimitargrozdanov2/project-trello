@@ -68,5 +68,15 @@ namespace WorkItemManagementSystem.Tests.Mitko_s_Tests
             var message = sut.Execute(parameters);
             Assert.AreEqual(" Team teamX was created.", message);
         }
+        [TestMethod]
+        public void ThrowExceptionWithInvalidParameters()
+        {
+            var factoryMock = new Mock<IFactory>();
+            var dbMock = new Mock<IDataBase>();
+
+            var sut = new CreateTeamCommand(factoryMock.Object, dbMock.Object);
+            Assert.ThrowsException<ArgumentException>
+                (() => sut.Execute(new List<string> {  }));
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace WorkItemManagementSystem.Models
         {
             get
             {
-                return new List<WorkItem>(this.workItems);
+                return this.workItems;
             }
         }
 
