@@ -58,7 +58,7 @@ namespace WorkItemManagementSystem.Commands.Adding
                 var pwi = person.WorkItems; // list of Person's Work Items
                 if (pwi == null || pwi.Count == 0)
                 {
-                    return $"Can not UNASSIGN! The Person {userName} ({person.FirstName} {person.LastName}) has no any WorkItems!\n";
+                    return $"Can not UNASSIGN! The Person {userName} ({person.FirstName} {person.LastName}) has no WorkItems!\n";
                 }
                 else
                 {
